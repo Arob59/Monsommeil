@@ -1,0 +1,2023 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Centre du Sommeil — Clinique Les Peupliers, Villeneuve-d'Ascq. Évaluation et prise en charge des troubles du sommeil.">
+<meta name="robots" content="noindex, nofollow">
+<title>Centre du Sommeil — Clinique Les Peupliers</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@300;400;600&display=swap');
+
+:root {
+  --navy:#0d2240; --navy-mid:#1a3a5c; --navy-light:#2a5480;
+  --teal:#1e7b6e; --teal-light:#2ea898; --teal-pale:#e6f5f3;
+  --amber:#c47c1a; --amber-pale:#fdf3e3;
+  --red:#b03030; --red-pale:#fdf0f0;
+  --green:#2d7a3a; --green-pale:#edf7ef;
+  --purple:#5c2a8a; --purple-pale:#f3eafa;
+  --gray-1:#f8f9fa; --gray-2:#e9ecef; --gray-3:#ced4da;
+  --gray-4:#868e96; --gray-5:#495057; --white:#ffffff;
+  --border:1px solid var(--gray-2);
+  --shadow:0 2px 12px rgba(13,34,64,0.08);
+  --radius:10px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Source Sans 3',sans-serif;font-size:15px;color:var(--gray-5);background:#f0f4f8;min-height:100vh;}
+
+/* ── HEADER ── */
+header{background:var(--navy);color:var(--white);position:sticky;top:0;z-index:200;box-shadow:0 2px 16px rgba(0,0,0,.25);}
+.header-inner{max-width:1100px;margin:auto;padding:14px 24px;display:flex;align-items:center;gap:16px;}
+.header-logo{width:42px;height:42px;background:var(--teal-light);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
+.header-title{font-family:'Playfair Display',serif;font-size:17px;font-weight:600;line-height:1.2;}
+.header-sub{font-size:11px;opacity:.7;margin-top:2px;}
+.header-right{margin-left:auto;}
+.btn-pro-hd{background:transparent;border:1px solid rgba(255,255,255,.4);color:var(--white);padding:7px 14px;border-radius:20px;cursor:pointer;font-size:13px;font-family:'Source Sans 3',sans-serif;transition:background .2s;}
+.btn-pro-hd:hover{background:rgba(255,255,255,.12);}
+
+/* ── NAV ── */
+.nav-bar{background:var(--navy-mid);display:flex;justify-content:center;overflow-x:auto;}
+.nav-tab{padding:10px 18px;color:rgba(255,255,255,.6);cursor:pointer;font-size:13px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;border-bottom:3px solid transparent;white-space:nowrap;transition:all .2s;user-select:none;}
+.nav-tab:hover{color:rgba(255,255,255,.9);}
+.nav-tab.active{color:#fff;border-bottom-color:var(--teal-light);}
+
+/* ── PAGES ── */
+.page{display:none;}
+.page.active{display:block;}
+main{max-width:960px;margin:0 auto;padding:32px 20px 80px;}
+
+/* ── CARDS ── */
+.card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);margin-bottom:24px;overflow:hidden;}
+.card-header{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 100%);color:var(--white);padding:20px 24px;}
+.card-header h2{font-family:'Playfair Display',serif;font-size:20px;font-weight:600;margin-bottom:4px;}
+.card-header p{font-size:13px;opacity:.75;}
+.card-body{padding:24px;}
+
+/* ── HERO ── */
+.hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 60%,var(--navy-light) 100%);color:var(--white);padding:56px 24px 48px;text-align:center;margin-bottom:0;}
+.hero h1{font-family:'Playfair Display',serif;font-size:32px;font-weight:600;margin-bottom:12px;line-height:1.25;}
+.hero p{font-size:16px;opacity:.85;max-width:600px;margin:0 auto 28px;line-height:1.7;}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.btn-hero-primary{background:var(--teal-light);color:#fff;border:none;padding:13px 28px;border-radius:25px;font-size:15px;font-weight:600;cursor:pointer;font-family:'Source Sans 3',sans-serif;transition:background .2s;}
+.btn-hero-primary:hover{background:var(--teal);}
+.btn-hero-secondary{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.5);padding:13px 28px;border-radius:25px;font-size:15px;cursor:pointer;font-family:'Source Sans 3',sans-serif;transition:background .2s;}
+.btn-hero-secondary:hover{background:rgba(255,255,255,.1);}
+
+/* ── INFO BLOCKS ── */
+.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:24px;}
+@media(max-width:700px){.info-grid{grid-template-columns:1fr;}}
+.info-box{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px;border-top:4px solid var(--teal);}
+.info-box.amber{border-top-color:var(--amber);}
+.info-box.navy{border-top-color:var(--navy);}
+.info-box-icon{font-size:26px;margin-bottom:10px;}
+.info-box h3{font-family:'Playfair Display',serif;font-size:16px;margin-bottom:8px;color:var(--navy);}
+.info-box p{font-size:13px;color:var(--gray-4);line-height:1.6;}
+
+/* ── ADDRESS BOX ── */
+.address-box{background:var(--navy);color:#fff;border-radius:var(--radius);padding:24px;display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+@media(max-width:600px){.address-box{grid-template-columns:1fr;}}
+.address-item{font-size:14px;line-height:1.8;}
+.address-item strong{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.8px;opacity:.6;margin-bottom:4px;}
+
+/* ── QUESTIONNAIRE CHOICE CARDS ── */
+.qchoice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:8px;}
+@media(max-width:700px){.qchoice-grid{grid-template-columns:1fr;}}
+.qchoice-card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);padding:24px;border-top:5px solid var(--teal);cursor:pointer;transition:transform .15s,box-shadow .15s;position:relative;}
+.qchoice-card:hover{transform:translateY(-3px);box-shadow:0 6px 24px rgba(13,34,64,.14);}
+.qchoice-card.amber{border-top-color:var(--amber);}
+.qchoice-card.purple{border-top-color:var(--purple);}
+.qchoice-icon{font-size:28px;margin-bottom:12px;}
+.qchoice-card h3{font-family:'Playfair Display',serif;font-size:17px;color:var(--navy);margin-bottom:8px;}
+.qchoice-card p{font-size:13px;color:var(--gray-4);line-height:1.6;margin-bottom:14px;}
+.qchoice-list{font-size:12px;color:var(--gray-5);}
+.qchoice-list li{padding:3px 0;list-style:none;padding-left:14px;position:relative;}
+.qchoice-list li::before{content:'▸';position:absolute;left:0;color:var(--teal);font-size:10px;}
+.qchoice-card.amber .qchoice-list li::before{color:var(--amber);}
+.qchoice-card.purple .qchoice-list li::before{color:var(--purple);}
+.btn-qchoice{display:block;width:100%;margin-top:16px;padding:10px;background:var(--teal-pale);color:var(--teal);border:1px solid var(--teal-light);border-radius:7px;font-family:'Source Sans 3',sans-serif;font-size:13px;font-weight:600;cursor:pointer;text-align:center;transition:background .2s;}
+.btn-qchoice:hover{background:#c0ede6;}
+.qchoice-card.amber .btn-qchoice{background:var(--amber-pale);color:var(--amber);border-color:#f0c060;}
+.qchoice-card.purple .btn-qchoice{background:var(--purple-pale);color:var(--purple);border-color:#c09ad8;}
+
+/* ── IDENTITY GATE ── */
+.id-gate{max-width:520px;margin:0 auto;}
+.id-gate .card-header{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 100%);}
+.form-group{margin-bottom:16px;}
+.form-group label{display:block;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--gray-4);margin-bottom:6px;}
+.form-group input,.form-group select{width:100%;padding:10px 14px;border:1px solid var(--gray-3);border-radius:7px;font-family:'Source Sans 3',sans-serif;font-size:14px;color:var(--gray-5);background:var(--gray-1);transition:border-color .2s;}
+.form-group input:focus,.form-group select:focus{outline:none;border-color:var(--teal-light);background:#fff;}
+.form-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media(max-width:560px){.form-grid-2{grid-template-columns:1fr;}}
+.req{color:var(--red);}
+.btn-submit-id{width:100%;padding:14px;background:var(--teal);color:#fff;border:none;border-radius:var(--radius);font-family:'Source Sans 3',sans-serif;font-size:15px;font-weight:600;cursor:pointer;margin-top:8px;transition:background .2s;}
+.btn-submit-id:hover{background:var(--teal-light);}
+.consent-box{background:var(--amber-pale);border:1px solid #f0c060;border-radius:7px;padding:14px;margin-bottom:16px;font-size:12px;line-height:1.6;color:var(--gray-5);}
+.consent-box label{display:flex;gap:10px;align-items:flex-start;cursor:pointer;}
+.consent-box input[type=checkbox]{margin-top:2px;flex-shrink:0;accent-color:var(--teal);}
+
+/* ── QUESTIONNAIRE FORM ── */
+.question-block{padding:15px 0;border-bottom:var(--border);}
+.question-block:last-child{border-bottom:none;}
+.question-text{font-size:14px;color:var(--gray-5);margin-bottom:11px;line-height:1.5;}
+.question-num{display:inline-block;width:22px;height:22px;background:var(--navy);color:#fff;border-radius:50%;font-size:11px;font-weight:600;text-align:center;line-height:22px;margin-right:8px;flex-shrink:0;}
+.options-row{display:flex;gap:8px;flex-wrap:wrap;}
+.opt-btn{flex:1;min-width:80px;padding:8px 6px;border:1px solid var(--gray-3);border-radius:7px;background:var(--gray-1);cursor:pointer;font-family:'Source Sans 3',sans-serif;font-size:12px;color:var(--gray-5);text-align:center;transition:all .15s;line-height:1.3;}
+.opt-btn:hover{border-color:var(--teal-light);background:var(--teal-pale);}
+.opt-btn.selected{border-color:var(--teal);background:var(--teal-pale);color:var(--teal);font-weight:600;}
+.opt-score{display:block;font-size:10px;opacity:.6;margin-top:2px;}
+.had-row{display:flex;gap:6px;flex-wrap:wrap;}
+.had-opt{flex:1;min-width:70px;padding:8px 4px;border:1px solid var(--gray-3);border-radius:7px;background:var(--gray-1);cursor:pointer;font-family:'Source Sans 3',sans-serif;font-size:11px;color:var(--gray-5);text-align:center;transition:all .15s;line-height:1.3;}
+.had-opt:hover{border-color:var(--navy-light);background:#eef3fa;}
+.had-opt.selected{border-color:var(--navy);background:#eef3fa;color:var(--navy);font-weight:600;}
+.boss-info{background:var(--teal-pale);border-left:3px solid var(--teal);padding:12px 16px;border-radius:0 7px 7px 0;font-size:13px;margin-bottom:16px;line-height:1.5;color:var(--teal);}
+.progress-wrap{background:var(--gray-2);height:5px;border-radius:3px;margin:16px 0 4px;}
+.progress-fill{height:100%;background:var(--teal-light);border-radius:3px;transition:width .3s;}
+.progress-label{font-size:11px;color:var(--gray-4);text-align:right;}
+.btn-submit-q{width:100%;padding:16px;background:var(--teal);color:#fff;border:none;border-radius:var(--radius);font-family:'Source Sans 3',sans-serif;font-size:16px;font-weight:600;cursor:pointer;transition:background .2s;margin-top:8px;}
+.btn-submit-q:hover{background:var(--teal-light);}
+.btn-back{background:transparent;border:1px solid var(--gray-3);color:var(--gray-4);padding:10px 20px;border-radius:7px;cursor:pointer;font-size:13px;margin-bottom:16px;font-family:'Source Sans 3',sans-serif;}
+.form-alert{background:var(--red-pale);border:1px solid #f0b0b0;color:var(--red);border-radius:7px;padding:12px 16px;font-size:13px;margin-bottom:14px;display:none;}
+
+/* ── RESULTS ── */
+.results-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:24px;}
+@media(max-width:600px){.results-grid{grid-template-columns:1fr;}}
+.result-card{border-radius:var(--radius);padding:18px;border:1px solid transparent;}
+.result-card.normal{background:var(--green-pale);border-color:#b7ddc0;}
+.result-card.mild{background:var(--amber-pale);border-color:#f5d48a;}
+.result-card.moderate{background:#fff3e0;border-color:#f5c474;}
+.result-card.severe{background:var(--red-pale);border-color:#f0b0b0;}
+.result-card-name{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px;opacity:.7;}
+.result-card-score{font-size:30px;font-weight:300;font-family:'Playfair Display',serif;}
+.result-card-label{font-size:13px;font-weight:600;margin-top:4px;}
+.result-card-interp{font-size:12px;margin-top:6px;opacity:.8;line-height:1.4;}
+.interp-block{background:var(--navy);color:#fff;border-radius:var(--radius);padding:24px;margin-bottom:24px;}
+.interp-block h3{font-family:'Playfair Display',serif;font-size:18px;margin-bottom:12px;}
+.interp-block p{font-size:14px;line-height:1.7;opacity:.9;}
+.interp-block .warning{background:rgba(255,200,60,.15);border-left:3px solid #ffc840;padding:12px 16px;border-radius:0 6px 6px 0;margin-top:14px;font-size:13px;}
+.info-patient-banner{background:var(--amber-pale);border:1px solid #f0c060;border-radius:7px;padding:14px 18px;margin-bottom:20px;font-size:13px;line-height:1.6;color:var(--gray-5);}
+.btn-pdf{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:14px;background:var(--navy);color:#fff;border:none;border-radius:var(--radius);font-family:'Source Sans 3',sans-serif;font-size:15px;font-weight:600;cursor:pointer;transition:background .2s;margin-bottom:12px;}
+.btn-pdf:hover{background:var(--navy-light);}
+.btn-reset{width:100%;padding:12px;background:transparent;color:var(--gray-4);border:1px solid var(--gray-3);border-radius:var(--radius);font-family:'Source Sans 3',sans-serif;font-size:14px;cursor:pointer;}
+
+/* ── EXPLORATIONS ── */
+.step-card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);padding:24px;margin-bottom:20px;display:flex;gap:20px;}
+@media(max-width:600px){.step-card{flex-direction:column;}}
+.step-num{width:44px;height:44px;background:var(--navy);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:18px;font-weight:600;flex-shrink:0;}
+.step-body h3{font-family:'Playfair Display',serif;font-size:17px;color:var(--navy);margin-bottom:8px;}
+.step-body p{font-size:14px;line-height:1.7;color:var(--gray-5);}
+.step-body ul{font-size:13px;color:var(--gray-5);line-height:2;padding-left:0;list-style:none;}
+.step-body ul li{position:relative;padding-left:16px;}
+.step-body ul li::before{content:'▸';position:absolute;left:0;color:var(--teal);}
+.prep-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px;}
+@media(max-width:640px){.prep-grid{grid-template-columns:1fr;}}
+.prep-col{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px;}
+.prep-col h4{font-family:'Playfair Display',serif;font-size:15px;color:var(--navy);margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid var(--gray-2);}
+.prep-col.do h4{border-bottom-color:var(--teal);}
+.prep-col.dont h4{border-bottom-color:var(--red);}
+.prep-item{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:var(--border);}
+.prep-item:last-child{border-bottom:none;}
+.prep-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;margin-top:1px;}
+.prep-dot.ok{background:var(--green-pale);color:var(--green);}
+.prep-dot.no{background:var(--red-pale);color:var(--red);}
+.prep-item-text{font-size:13px;line-height:1.5;}
+.prep-item-text strong{display:block;font-weight:600;color:var(--gray-5);margin-bottom:2px;}
+.prep-item-text span{color:var(--gray-4);}
+
+/* ── PARCOURS ── */
+.parcours-step{display:flex;gap:20px;margin-bottom:28px;position:relative;}
+.parcours-step::after{content:'';position:absolute;left:21px;top:46px;bottom:-28px;width:2px;background:var(--gray-2);}
+.parcours-step:last-child::after{display:none;}
+.parcours-num{width:44px;height:44px;border-radius:50%;background:var(--teal-pale);border:2px solid var(--teal-light);color:var(--teal);display:flex;align-items:center;justify-content:center;font-weight:600;font-size:16px;flex-shrink:0;}
+.parcours-body{padding-top:8px;}
+.parcours-body h3{font-family:'Playfair Display',serif;font-size:16px;color:var(--navy);margin-bottom:6px;}
+.parcours-body p{font-size:13px;line-height:1.7;color:var(--gray-4);}
+.badge-tag{display:inline-block;background:var(--teal-pale);color:var(--teal);border-radius:12px;padding:2px 10px;font-size:11px;font-weight:600;margin-top:6px;}
+.badge-tag.amber{background:var(--amber-pale);color:var(--amber);}
+.badge-tag.purple{background:var(--purple-pale);color:var(--purple);}
+
+/* ── PRO ── */
+.login-card{max-width:420px;margin:0 auto;background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);padding:36px;}
+.login-card h2{font-family:'Playfair Display',serif;font-size:22px;margin-bottom:6px;}
+.login-card p{font-size:13px;color:var(--gray-4);margin-bottom:24px;}
+.btn-login{width:100%;padding:13px;background:var(--navy);color:#fff;border:none;border-radius:7px;font-family:'Source Sans 3',sans-serif;font-size:15px;font-weight:600;cursor:pointer;}
+.login-hint{font-size:11px;color:var(--gray-4);text-align:center;margin-top:12px;}
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px;}
+@media(max-width:600px){.stats-row{grid-template-columns:repeat(2,1fr);}}
+.stat-box{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px;text-align:center;}
+.stat-num{font-family:'Playfair Display',serif;font-size:28px;color:var(--navy);}
+.stat-label{font-size:11px;color:var(--gray-4);text-transform:uppercase;letter-spacing:.5px;}
+.records-table{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;margin-bottom:20px;}
+.records-table table{width:100%;border-collapse:collapse;font-size:13px;}
+.records-table th{background:var(--navy);color:#fff;padding:11px 12px;text-align:left;font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.5px;}
+.records-table td{padding:11px 12px;border-bottom:var(--border);}
+.records-table tr:last-child td{border-bottom:none;}
+.records-table tr:hover td{background:var(--gray-1);}
+.badge{display:inline-block;padding:3px 9px;border-radius:12px;font-size:11px;font-weight:600;}
+.badge-normal{background:var(--green-pale);color:var(--green);}
+.badge-mild{background:var(--amber-pale);color:var(--amber);}
+.badge-moderate{background:#fff3e0;color:#b86a00;}
+.badge-severe{background:var(--red-pale);color:var(--red);}
+.empty-state{text-align:center;padding:48px 24px;color:var(--gray-4);font-size:14px;}
+.pro-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px;}
+.pro-header h2{font-family:'Playfair Display',serif;font-size:22px;}
+.pro-actions{display:flex;gap:8px;align-items:center;}
+.btn-logout,.btn-csv,.btn-detail{padding:7px 14px;border-radius:20px;cursor:pointer;font-size:12px;font-family:'Source Sans 3',sans-serif;font-weight:600;}
+.btn-logout{background:transparent;border:1px solid var(--gray-3);color:var(--gray-4);}
+.btn-csv{background:var(--teal-pale);border:1px solid var(--teal-light);color:var(--teal);}
+.btn-csv:disabled{opacity:.4;cursor:default;}
+
+/* ── LEGAL / INFOS ── */
+.legal-section{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);padding:28px;margin-bottom:20px;}
+.legal-section h3{font-family:'Playfair Display',serif;font-size:18px;color:var(--navy);margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid var(--teal-pale);}
+.legal-section p,.legal-section li{font-size:13px;line-height:1.8;color:var(--gray-5);}
+.legal-section ul{padding-left:18px;margin-top:8px;}
+.legal-section li{margin-bottom:4px;}
+.legal-alert{background:#fff8e1;border:1px solid #ffe082;border-radius:7px;padding:14px 18px;margin-bottom:16px;font-size:13px;color:#7a5400;line-height:1.6;}
+.legal-alert strong{display:block;margin-bottom:4px;}
+
+/* ── FOOTER ── */
+footer{background:var(--navy);color:rgba(255,255,255,.6);text-align:center;padding:20px;font-size:12px;line-height:1.8;}
+footer a{color:rgba(255,255,255,.7);text-decoration:none;}
+footer a:hover{color:#fff;}
+
+/* ══════════════════════════════════════
+   RESPONSIVE — MOBILE & TABLETTE
+══════════════════════════════════════ */
+
+/* ── Hamburger button (mobile only) ── */
+.hamburger{display:none;background:none;border:none;cursor:pointer;padding:6px;flex-direction:column;gap:5px;margin-left:auto;}
+.hamburger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:all .25s;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+/* ── Mobile nav drawer ── */
+.nav-drawer{display:none;flex-direction:column;background:var(--navy-mid);padding:0;}
+.nav-drawer .nav-tab{border-bottom:1px solid rgba(255,255,255,.08);border-left:3px solid transparent;padding:14px 20px;font-size:14px;letter-spacing:0;}
+.nav-drawer .nav-tab.active{border-left-color:var(--teal-light);background:rgba(255,255,255,.05);}
+.nav-drawer.open{display:flex;}
+
+/* ── TABLETTE (max 768px) ── */
+@media(max-width:768px){
+  .header-inner{padding:12px 16px;gap:12px;}
+  .header-title{font-size:14px;}
+  .header-sub{display:none;}
+
+  /* Nav desktop hidden → hamburger shown */
+  .nav-bar{display:none;}
+  .hamburger{display:flex;}
+
+  .hero{padding:40px 20px 36px;}
+  .hero h1{font-size:24px;}
+  .hero h1 span{font-size:0.65em;}
+  .hero p{font-size:14px;margin-bottom:20px;}
+  .btn-hero-primary,.btn-hero-secondary{padding:11px 20px;font-size:14px;}
+
+  main{padding:20px 14px 60px;}
+
+  .card-header{padding:16px 18px;}
+  .card-header h2{font-size:17px;}
+  .card-body{padding:16px 18px;}
+
+  .info-grid{grid-template-columns:1fr;}
+  .qchoice-grid{grid-template-columns:1fr;}
+  .form-grid-2{grid-template-columns:1fr;}
+  .results-grid{grid-template-columns:1fr;}
+  .prep-grid{grid-template-columns:1fr;}
+  .address-box{grid-template-columns:1fr;}
+  .stats-row{grid-template-columns:repeat(2,1fr);}
+
+  .step-card{flex-direction:column;gap:14px;}
+  .parcours-step::after{left:20px;}
+
+  .id-gate{max-width:100%;}
+  .login-card{padding:24px 18px;}
+
+  /* Pro table: horizontal scroll */
+  .records-table{overflow-x:auto;}
+  .records-table table{min-width:560px;}
+
+  /* Pro tabs */
+  #tab-btn-initial,#tab-btn-suivi{padding:9px 12px;font-size:12px;}
+
+  .legal-section{padding:20px 16px;}
+  .legal-section h3{font-size:16px;}
+
+  footer{font-size:11px;padding:16px 12px;}
+}
+
+/* ── MOBILE (max 480px) ── */
+@media(max-width:480px){
+  .header-title{font-size:12px;line-height:1.3;}
+  .btn-pro-hd{padding:6px 10px;font-size:11px;}
+
+  .hero{padding:32px 16px 28px;}
+  .hero h1{font-size:20px;}
+  .hero p{font-size:13px;}
+  .hero-btns{flex-direction:column;align-items:stretch;}
+  .btn-hero-primary,.btn-hero-secondary{text-align:center;}
+
+  main{padding:16px 12px 56px;}
+
+  .card-header{padding:14px 14px;}
+  .card-header h2{font-size:16px;}
+  .card-body{padding:14px;}
+
+  .stat-box{padding:12px 8px;}
+  .stat-num{font-size:22px;}
+  .stat-label{font-size:10px;}
+
+  .result-card{padding:14px;}
+  .result-card-score{font-size:26px;}
+
+  .opt-btn{font-size:11px;padding:7px 4px;}
+  .had-opt{font-size:10px;padding:7px 3px;}
+
+  .btn-submit-id,.btn-submit-q,.btn-pdf{font-size:14px;padding:13px;}
+
+  .prep-item{gap:10px;}
+  .prep-dot{width:24px;height:24px;font-size:11px;}
+  .prep-item-text{font-size:12px;}
+
+  .qchoice-card{padding:18px;}
+  .qchoice-card h3{font-size:15px;}
+
+  /* Pro table */
+  .records-table table{min-width:480px;font-size:12px;}
+  .records-table th,.records-table td{padding:9px 8px;}
+
+  /* Pro tabs full width */
+  #tab-btn-initial,#tab-btn-suivi{flex:1;border-radius:6px 6px 0 0;font-size:11px;padding:9px 6px;}
+
+  .interp-block{padding:18px 14px;}
+  .interp-block h3{font-size:16px;}
+
+  footer{padding:14px 10px;line-height:2;}
+}
+
+/* ── DESKTOP large (min 1024px) ── */
+@media(min-width:1024px){
+  main{padding:36px 24px 80px;}
+  .hero{padding:64px 32px 56px;}
+  .hero h1{font-size:36px;}
+  .info-grid{gap:24px;}
+  .qchoice-grid{gap:24px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ HEADER ══ -->
+<header>
+  <div class="header-inner">
+    <div class="header-logo">🌙</div>
+    <div>
+      <div class="header-title">Centre du Sommeil — Clinique Les Peupliers — Dr Arbaj</div>
+      <div class="header-sub">Villeneuve-d'Ascq · Prise en charge des troubles du sommeil</div>
+    </div>
+    <div class="header-right" style="display:flex;align-items:center;gap:8px;">
+      <button class="btn-pro-hd" onclick="switchTab('pro')">Espace Pro</button>
+      <button class="hamburger" id="hamburger-btn" onclick="toggleMenu()" aria-label="Menu navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <!-- Nav desktop -->
+  <nav class="nav-bar">
+    <div class="nav-tab active" onclick="switchTab('accueil')">Accueil</div>
+    <div class="nav-tab" onclick="switchTab('explorations')">Explorations</div>
+    <div class="nav-tab" onclick="switchTab('questionnaires')">Questionnaires</div>
+    <div class="nav-tab" onclick="switchTab('infos')">Infos &amp; Mentions légales</div>
+  </nav>
+  <!-- Nav mobile drawer -->
+  <nav class="nav-drawer" id="nav-drawer">
+    <div class="nav-tab active" onclick="switchTab('accueil');closeMenu()">🏠 Accueil</div>
+    <div class="nav-tab" onclick="switchTab('explorations');closeMenu()">🔬 Explorations</div>
+    <div class="nav-tab" onclick="switchTab('questionnaires');closeMenu()">📋 Questionnaires</div>
+    <div class="nav-tab" onclick="switchTab('infos');closeMenu()">📄 Infos &amp; Mentions</div>
+  </nav>
+</header>
+
+<!-- ══════════════════════════════════════
+     PAGE : ACCUEIL
+══════════════════════════════════════════ -->
+<div id="page-accueil" class="page active">
+  <div class="hero">
+    <h1>Centre du Sommeil<br><span style="font-size:0.62em;font-weight:400;opacity:0.85;font-style:italic;letter-spacing:0.5px;">Clinique Les Peupliers &nbsp;·&nbsp; Dr Arbaj</span></h1>
+    <p>Un accompagnement médical complet pour le diagnostic et la prise en charge de vos troubles du sommeil, au sein de la Clinique Les Peupliers de Villeneuve-d'Ascq.</p>
+    <div class="hero-btns">
+      <button class="btn-hero-primary" onclick="switchTab('questionnaires')">Remplir un questionnaire</button>
+      <button class="btn-hero-secondary" onclick="switchTab('explorations')">Nos explorations</button>
+    </div>
+  </div>
+
+  <main>
+    <div class="info-grid" style="margin-top:32px;">
+      <div class="info-box amber">
+        <div class="info-box-icon">📋</div>
+        <h3>Bilan clinique complet</h3>
+        <p>Consultation initiale avec questionnaires validés (Epworth, Pichot, ISI, MEQ, HAD) pour établir un profil précis de vos troubles du sommeil.</p>
+      </div>
+      <div class="info-box">
+        <div class="info-box-icon">🫀</div>
+        <h3>Polygraphie ventilatoire nocturne</h3>
+        <p>Enregistrement centré sur les paramètres respiratoires et cardiaques. Indiqué dans le dépistage du syndrome d'apnées obstructives du sommeil (SAOS).</p>
+      </div>
+      <div class="info-box navy">
+        <div class="info-box-icon">🧠</div>
+        <h3>Polysomnographie</h3>
+        <p>Bilan complet en centre du sommeil avec analyse EEG, EMG et ventilation nocturne. Examen de référence pour le diagnostic des troubles du sommeil.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <h2>Clinique Les Peupliers — Nous contacter</h2>
+        <p>Centre du Sommeil — Villeneuve-d'Ascq</p>
+      </div>
+      <div class="card-body">
+        <div class="address-box">
+          <div class="address-item">
+            <strong>Adresse</strong>
+            109 Rue d'Hem<br>59491 Villeneuve-d'Ascq
+          </div>
+          <div class="address-item">
+            <strong>Téléphone</strong>
+            03 20 05 70 00
+          </div>
+          <div class="address-item">
+            <strong>Horaires secrétariat</strong>
+            Jeudi : 9h00 – 17h30<br>
+            Vendredi : 13h00 – 17h30
+          </div>
+          <div class="address-item">
+            <strong>Téléconsultation</strong>
+            Sur rendez-vous uniquement
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE : EXPLORATIONS
+══════════════════════════════════════════ -->
+<div id="page-explorations" class="page">
+  <main>
+    <div class="card" style="margin-bottom:28px;">
+      <div class="card-header">
+        <h2>Nos explorations du sommeil</h2>
+        <p>Examens réalisés au Centre du Sommeil de la Clinique Les Peupliers</p>
+      </div>
+      <div class="card-body">
+        <div class="step-card" style="border-left:4px solid var(--teal);">
+          <div class="step-num">🧠</div>
+          <div class="step-body">
+            <h3>Polysomnographie complète</h3>
+            <p>Bilan complet en centre du sommeil avec analyse EEG (électroencéphalogramme), EMG (électromyogramme) et surveillance de la ventilation nocturne. C'est l'examen de référence pour le diagnostic des syndromes d'apnées du sommeil, des hypersomnies et des parasomnies.</p>
+            <ul style="margin-top:10px;">
+              <li>Enregistrement de l'activité cérébrale (EEG)</li>
+              <li>Surveillance des mouvements oculaires (EOG)</li>
+              <li>Analyse du tonus musculaire (EMG)</li>
+              <li>Mesure de la saturation en oxygène (SpO₂)</li>
+              <li>Surveillance de la ventilation et des ronflements</li>
+              <li>Enregistrement vidéo nocturne si nécessaire</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="step-card" style="border-left:4px solid var(--amber);">
+          <div class="step-num">🫀</div>
+          <div class="step-body">
+            <h3>Enregistrement polygraphique ventilatoire</h3>
+            <p>Enregistrement simplifié réalisable à domicile ou en centre, centré sur les paramètres ventilatoires et cardiaques. Indiqué dans le dépistage du syndrome d'apnées obstructives du sommeil (SAOS).</p>
+            <ul style="margin-top:10px;">
+              <li>Débit nasal et buccal</li>
+              <li>Mouvements thoraco-abdominaux</li>
+              <li>Saturation en oxygène et fréquence cardiaque</li>
+              <li>Position corporelle</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <h2>Comment se préparer à votre nuit d'enregistrement ?</h2>
+        <p>Recommandations pour optimiser la qualité de votre examen</p>
+      </div>
+      <div class="card-body">
+        <div class="prep-grid">
+          <div class="prep-col do">
+            <h4>✅ Ce qu'il faut faire</h4>
+            <div class="prep-item">
+              <div class="prep-dot ok">🛁</div>
+              <div class="prep-item-text">
+                <strong>Prendre une douche le soir</strong>
+                <span>Cheveux propres et secs pour faciliter la pose des électrodes. N'appliquez ni laque, ni gel capillaire.</span>
+              </div>
+            </div>
+            <div class="prep-item">
+              <div class="prep-dot ok">💊</div>
+              <div class="prep-item-text">
+                <strong>Prendre vos médicaments habituels</strong>
+                <span>Sauf indication contraire explicite de votre médecin. Apportez votre ordonnance.</span>
+              </div>
+            </div>
+            <div class="prep-item">
+              <div class="prep-dot ok">🌙</div>
+              <div class="prep-item-text">
+                <strong>Maintenir votre horaire de coucher habituel</strong>
+                <span>Ne cherchez pas à vous fatiguer davantage. Venez à l'heure convenue avec l'équipe.</span>
+              </div>
+            </div>
+            <div class="prep-item">
+              <div class="prep-dot ok">👕</div>
+              <div class="prep-item-text">
+                <strong>Apporter une tenue de nuit confortable</strong>
+                <span>Pyjama ou vêtements amples. Prévoyez également vos affaires de toilette pour le lendemain matin.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="prep-col dont">
+            <h4>🚫 Ce qu'il faut éviter</h4>
+            <div class="prep-item">
+              <div class="prep-dot no">☕</div>
+              <div class="prep-item-text">
+                <strong>Caféine après 14h00</strong>
+                <span>Café, thé, sodas caféinés, boissons énergisantes. La caféine perturbe l'architecture du sommeil.</span>
+              </div>
+            </div>
+            <div class="prep-item">
+              <div class="prep-dot no">🍷</div>
+              <div class="prep-item-text">
+                <strong>Alcool dans les 24h précédentes</strong>
+                <span>L'alcool fragmente le sommeil et modifie les stades de sommeil profond, faussant les résultats.</span>
+              </div>
+            </div>
+            <div class="prep-item">
+              <div class="prep-dot no">😴</div>
+              <div class="prep-item-text">
+                <strong>Sieste le jour de l'examen</strong>
+                <span>Évitez de dormir dans l'après-midi précédant l'enregistrement pour favoriser l'endormissement en laboratoire.</span>
+              </div>
+            </div>
+            <div class="prep-item">
+              <div class="prep-dot no">📱</div>
+              <div class="prep-item-text">
+                <strong>Écrans en chambre d'enregistrement</strong>
+                <span>La lumière bleue des écrans retarde l'endormissement. Prévoyez une lecture ou une activité calme si besoin.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE : QUESTIONNAIRES
+══════════════════════════════════════════ -->
+<div id="page-questionnaires" class="page">
+  <main>
+
+    <!-- Choix du type -->
+    <div id="q-choice-panel">
+      <div class="card">
+        <div class="card-header">
+          <h2>Questionnaires en ligne</h2>
+          <p>Sélectionnez le questionnaire correspondant à votre type de consultation. Vos réponses sont confidentielles et transmises à votre médecin.</p>
+        </div>
+        <div class="card-body">
+          <div class="qchoice-grid">
+
+            <!-- Consultation initiale -->
+            <div class="qchoice-card">
+              <div class="qchoice-icon">🩺</div>
+              <h3>Consultation initiale</h3>
+              <p>Premier bilan complet pour établir votre profil de sommeil.</p>
+              <button class="btn-qchoice" onclick="startQuestionnaire('initial')">Commencer →</button>
+            </div>
+
+            <!-- Consultation de suivi -->
+            <div class="qchoice-card amber">
+              <div class="qchoice-icon">📊</div>
+              <h3>Consultation de suivi</h3>
+              <p>Évaluation de l'évolution de vos symptômes entre deux consultations.</p>
+              <button class="btn-qchoice" onclick="startQuestionnaire('suivi')">Commencer →</button>
+            </div>
+
+            <!-- Agenda du sommeil -->
+            <div class="qchoice-card purple">
+              <div class="qchoice-icon">📅</div>
+              <h3>Agenda du sommeil</h3>
+              <p>Suivi quotidien de votre sommeil avec <strong>Somnora</strong>, l'application recommandée par votre médecin.</p>
+              <ul class="qchoice-list">
+                <li>Journal quotidien du sommeil</li>
+                <li>Suivi de la qualité de nuit</li>
+                <li>Évolution sur plusieurs semaines</li>
+              </ul>
+              <button class="btn-qchoice" onclick="openSomnora()">Ouvrir Somnora →</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ PANNEAU SOMNORA (iframe intégrée) ══ -->
+    <div id="somnora-panel" style="display:none;">
+      <button class="btn-back" onclick="closeSomnora()">← Retour aux questionnaires</button>
+      <div class="card">
+        <div class="card-header" style="background:linear-gradient(135deg,#3a1a5c 0%,#5c2a8a 100%);">
+          <h2>Agenda du sommeil — Somnora</h2>
+          <p>Application de suivi quotidien recommandée par le Dr Arbaj · Centre du Sommeil</p>
+        </div>
+        <div class="card-body" style="padding:0;overflow:hidden;border-radius:0 0 var(--radius) var(--radius);">
+
+          <!-- Barre d'info -->
+          <div style="padding:12px 20px;background:var(--purple-pale);border-bottom:1px solid #d0b0f0;display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+            <span style="font-size:13px;color:var(--purple);">
+              📅 <strong>somnora.lovable.app</strong> — application chargée dans cette fenêtre
+            </span>
+            <a href="https://somnora.lovable.app" target="_blank" rel="noopener"
+               style="margin-left:auto;font-size:12px;color:var(--purple);text-decoration:none;border:1px solid var(--purple);border-radius:5px;padding:4px 10px;white-space:nowrap;">
+              ↗ Ouvrir en plein écran
+            </a>
+          </div>
+
+          <!-- Iframe avec fallback -->
+          <div id="somnora-container" style="width:100%;min-height:680px;position:relative;">
+
+            <!-- Fallback visible si iframe bloquée -->
+            <div id="somnora-fallback" style="display:none;flex-direction:column;align-items:center;justify-content:center;min-height:400px;padding:40px 24px;text-align:center;">
+              <div style="font-size:40px;margin-bottom:16px;">📅</div>
+              <div style="font-size:18px;font-weight:600;color:var(--navy);font-family:'Playfair Display',serif;margin-bottom:10px;">Somnora — Agenda du sommeil</div>
+              <div style="font-size:14px;color:var(--gray-4);max-width:380px;line-height:1.7;margin-bottom:24px;">
+                L'application ne peut pas s'afficher directement dans cette page pour des raisons de sécurité. Cliquez ci-dessous pour l'ouvrir dans un nouvel onglet.
+              </div>
+              <a href="https://somnora.lovable.app" target="_blank" rel="noopener"
+                 style="display:inline-flex;align-items:center;gap:8px;background:#5c2a8a;color:#fff;padding:13px 28px;border-radius:25px;font-size:15px;font-weight:600;text-decoration:none;font-family:'Source Sans 3',sans-serif;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                Ouvrir Somnora
+              </a>
+            </div>
+
+            <!-- L'iframe elle-même -->
+            <iframe
+              id="somnora-iframe"
+              src="https://somnora.lovable.app"
+              width="100%"
+              height="680"
+              style="display:block;border:none;"
+              title="Somnora — Agenda du sommeil"
+              allow="fullscreen"
+              loading="lazy"
+            ></iframe>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="q-id-gate" style="display:none;">
+      <button class="btn-back" onclick="showChoicePanel()">← Retour au choix</button>
+      <div class="id-gate">
+        <div class="card">
+          <div class="card-header">
+            <h2 id="id-gate-title">Identification — Consultation initiale</h2>
+            <p>Ces informations sont nécessaires pour associer vos réponses à votre dossier médical.</p>
+          </div>
+          <div class="card-body">
+            <div class="legal-alert">
+              <strong>🔒 Vos données sont protégées</strong>
+              Les informations saisies sont transmises exclusivement à votre médecin du Centre du Sommeil, conformément au RGPD et au secret médical. Elles ne seront jamais partagées avec des tiers.
+            </div>
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label>Nom de famille <span class="req">*</span></label>
+                <input type="text" id="id-nom" placeholder="DUPONT">
+              </div>
+              <div class="form-group">
+                <label>Prénom <span class="req">*</span></label>
+                <input type="text" id="id-prenom" placeholder="Jean">
+              </div>
+            </div>
+            <div id="nom-jf-group" class="form-group" style="display:none;">
+              <label>Nom de jeune fille <span class="req">*</span> <span style="font-size:11px;color:var(--gray-4);font-weight:400;">(obligatoire pour les femmes)</span></label>
+              <input type="text" id="id-nom-jf" placeholder="Nom de naissance">
+            </div>
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label>Date de naissance <span class="req">*</span></label>
+                <input type="date" id="id-ddn">
+              </div>
+              <div class="form-group">
+                <label>Sexe <span class="req">*</span></label>
+                <select id="id-sexe" onchange="toggleNomJF()">
+                  <option value="">— Sélectionner —</option>
+                  <option value="F">Féminin</option>
+                  <option value="M">Masculin</option>
+                  <option value="A">Autre / Non précisé</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Adresse e-mail de contact <span class="req">*</span></label>
+              <input type="email" id="id-email" placeholder="jean.dupont@email.fr">
+            </div>
+            <div class="consent-box">
+              <div style="background:var(--teal-pale);border-left:3px solid var(--teal);border-radius:0 7px 7px 0;padding:12px 14px;margin-bottom:12px;font-size:12px;line-height:1.7;">
+                <strong style="display:block;color:var(--teal);margin-bottom:4px;">🔒 Information sur le traitement de vos données</strong>
+                <strong>Finalité :</strong> vos réponses sont utilisées exclusivement dans le cadre de votre prise en charge médicale au Centre du Sommeil.<br>
+                <strong>Absence de stockage :</strong> aucune donnée de santé n'est conservée sur ce site. Les informations sont traitées uniquement en mémoire le temps de générer votre bilan PDF, puis supprimées automatiquement.<br>
+                <strong>Transmission :</strong> votre bilan est généré localement dans votre navigateur et mis à disposition de votre médecin via l'espace professionnel sécurisé de la clinique. Aucun envoi vers un serveur extérieur n'est effectué sans votre accord.
+              </div>
+              <label>
+                <input type="checkbox" id="consent-check">
+                <span>Je consens à la transmission de mes données dans le cadre de ma prise en charge médicale au Centre du Sommeil — Clinique Les Peupliers, conformément aux informations ci-dessus. <span class="req">*</span></span>
+              </label>
+            </div>
+            <div id="id-alert" class="form-alert">⚠️ Merci de compléter tous les champs obligatoires et d'accepter le consentement.</div>
+            <button class="btn-submit-id" onclick="validateIdentity()">Accéder au questionnaire →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Zone questionnaire -->
+    <div id="q-form-panel" style="display:none;"></div>
+
+    <!-- Zone résultats -->
+    <div id="q-results-panel" style="display:none;"></div>
+
+  </main>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE : INFOS & MENTIONS LÉGALES
+══════════════════════════════════════════ -->
+<div id="page-infos" class="page">
+  <main>
+
+    <!-- Mentions légales -->
+    <div class="legal-section">
+      <h3>📋 Mentions légales</h3>
+      <p><strong>Éditeur du site :</strong><br>
+      Centre du Sommeil — Clinique Les Peupliers — Dr Arbaj<br>
+      109 Rue d'Hem, 59491 Villeneuve-d'Ascq<br>
+      Tél. : 03 20 05 70 00</p>
+
+      <p style="margin-top:12px;"><strong>Contact :</strong><br>
+      Secrétariat du Centre du Sommeil<br>
+      Tél. : 03 20 05 70 00<br>
+      Horaires : Jeudi 9h–17h30 / Vendredi 13h–17h30<br>
+      Pour toute question d'ordre administratif ou difficulté d'accès au site :<br>
+      <a href="/cdn-cgi/l/email-protection#c0a9aea6afeeb3afadada5a9aceea3aca9aea9b1b5a5edb0a5b5b0aca9a5b2b380a7ada1a9aceea3afad" style="color:var(--teal);"><span class="__cf_email__" data-cfemail="10797e767f3e637f7d7d75797c3e737c797e796165753d607565607c7975626350777d71797c3e737f7d">[email&#160;protected]</span></a><br>
+      <span style="font-size:12px;color:var(--gray-4);">Cette adresse est dédiée au support informatique. Elle ne constitue pas un canal de consultation médicale. Toute demande médicale doit être adressée directement au secrétariat ou lors de votre consultation.</span></p>
+
+      <p style="margin-top:12px;"><strong>Hébergeur :</strong><br>
+      Ce site ne traite pas à ce stade de données de santé persistantes. En cas d'évolution vers un stockage de données de santé, un hébergeur certifié HDS (art. L.1111-8 CSP) sera requis.</p>
+
+      <p style="margin-top:12px;"><strong>Propriété intellectuelle :</strong><br>
+      L'ensemble du contenu de ce site est la propriété du Centre du Sommeil de la Clinique Les Peupliers. Toute reproduction, même partielle, est soumise à autorisation préalable écrite.</p>
+    </div>
+
+    <!-- Finalité et nature du site -->
+    <div class="legal-section">
+      <h3>🩺 Nature et finalité du site</h3>
+      <p>Ce site est un outil d'aide à la prise en charge médicale, exclusivement réservé aux patients suivis au Centre du Sommeil de la Clinique Les Peupliers et aux professionnels de santé habilités. Il ne constitue pas un service de consultation médicale en ligne et ne remplace pas une consultation en présentiel.</p>
+
+      <p style="margin-top:10px;">Les questionnaires médicaux disponibles sur ce site (Epworth, Pichot, ISI, MEQ, HAD, Hamilton) sont des outils d'aide au diagnostic. Leurs résultats ne peuvent être interprétés que par un professionnel de santé qualifié dans le cadre d'une relation médicale établie.</p>
+
+      <p style="margin-top:10px;"><strong>En cas d'urgence médicale, composez le 15 (SAMU) ou le 112. Ce site n'est pas un service d'urgence.</strong></p>
+    </div>
+
+    <!-- Données personnelles - version courte et légale -->
+    <div class="legal-section">
+      <h3>🔒 Données personnelles et architecture technique</h3>
+      <p>Les données personnelles et de santé collectées via ce site (identité, date de naissance, adresse e-mail, réponses aux questionnaires) sont traitées à des fins exclusives de suivi médical, dans le cadre de la relation de soin entre le patient et le médecin du Centre du Sommeil.</p>
+
+      <p style="margin-top:10px;">Ce traitement est fondé sur l'article 9.2.h du RGPD (traitement à des fins de médecine préventive ou de médecine du travail, diagnostic médical, prise en charge ou traitement médical). Le responsable de traitement est le médecin responsable du Centre du Sommeil de la Clinique Les Peupliers.</p>
+
+      <p style="margin-top:10px;"><strong>Absence de stockage persistant :</strong> ce site ne conserve aucune donnée de santé sur un serveur. Les réponses aux questionnaires sont traitées uniquement en mémoire (session navigateur) le temps de générer le bilan PDF, puis supprimées automatiquement à la fermeture de l'onglet. Aucune base de données de santé n'est sollicitée à ce stade.</p>
+
+      <p style="margin-top:10px;">Conformément à la réglementation en vigueur, vous disposez d'un droit d'accès, de rectification et, dans les limites définies par le Code de la santé publique, d'effacement de vos données. Ces droits s'exercent auprès du secrétariat du Centre du Sommeil, par courrier postal à l'adresse mentionnée ci-dessus ou par e-mail à : <strong>[adresse e-mail du responsable de traitement]</strong>.</p>
+
+      <p style="margin-top:10px;">Pour toute question relative à la protection de vos données : <a href="https://www.cnil.fr" target="_blank" rel="noopener">www.cnil.fr</a>.</p>
+    </div>
+
+    <!-- Consentement -->
+    <div class="legal-section">
+      <h3>✅ Consentement à la collecte de données</h3>
+      <p>Préalablement à tout remplissage de questionnaire en ligne, le patient est informé de la finalité du traitement de ses données et exprime son consentement libre, éclairé et explicite via une case à cocher non pré-cochée. Ce consentement peut être retiré à tout moment, sans incidence sur la qualité de la prise en charge médicale.</p>
+
+      <p style="margin-top:10px;">Le consentement au traitement de données de santé ne se substitue pas au consentement aux soins, qui est recueilli lors de la consultation médicale.</p>
+    </div>
+
+    <!-- CGU courtes -->
+    <div class="legal-section">
+      <h3>📄 Conditions d'utilisation</h3>
+      <p>L'accès à ce site est réservé aux patients du Centre du Sommeil de la Clinique Les Peupliers et aux professionnels de santé habilités. Toute utilisation à des fins autres que médicales ou de suivi de soin est strictement interdite.</p>
+
+      <p style="margin-top:10px;">L'espace professionnel est protégé par des identifiants personnels. Toute transmission d'identifiants à un tiers non habilité engage la responsabilité de l'utilisateur.</p>
+
+      <p style="margin-top:10px;">L'éditeur du site se réserve le droit de modifier à tout moment le contenu et les conditions d'utilisation du site, sans préavis. L'utilisateur est invité à consulter régulièrement la présente page.</p>
+    </div>
+
+    <!-- Responsabilité -->
+    <div class="legal-section">
+      <h3>⚖️ Limitation de responsabilité</h3>
+      <p>L'éditeur met tout en œuvre pour assurer l'exactitude et la mise à jour des informations diffusées sur ce site. Toutefois, il ne saurait être tenu responsable des erreurs ou omissions, ni des conséquences d'une utilisation de ces informations en dehors du cadre médical pour lequel elles ont été conçues.</p>
+
+      <p style="margin-top:10px;">L'utilisation des questionnaires en dehors d'une prise en charge médicale établie, ou leur interprétation par le patient lui-même sans avis médical, se fait sous l'entière responsabilité de l'utilisateur. Les résultats obtenus n'ont aucune valeur diagnostique autonome.</p>
+
+      <p style="margin-top:10px;">Ce site peut contenir des liens vers des sites tiers (ex. : Somnora). L'éditeur n'est pas responsable du contenu ni des pratiques de ces sites.</p>
+    </div>
+
+  </main>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE : ESPACE PRO
+══════════════════════════════════════════ -->
+<div id="page-pro" class="page">
+  <main>
+    <div id="pro-login-panel">
+      <div class="login-card">
+        <h2>Espace Professionnel</h2>
+        <p>Accès réservé aux professionnels de santé habilités du Centre du Sommeil</p>
+        <div class="form-group">
+          <label>Identifiant</label>
+          <input type="text" id="pro-user" placeholder="Votre identifiant" autocomplete="off">
+        </div>
+        <div class="form-group">
+          <label>Mot de passe</label>
+          <input type="password" id="pro-pass" placeholder="••••••••">
+        </div>
+        <div id="pro-login-err" class="form-alert" style="display:none;">Identifiant ou mot de passe incorrect.</div>
+        <button class="btn-login" onclick="doProLogin()">Se connecter</button>
+      </div>
+    </div>
+
+    <div id="pro-dashboard" style="display:none;">
+      <div class="pro-header">
+        <div>
+          <h2>Tableau de bord professionnel</h2>
+          <p style="font-size:13px;color:var(--gray-4);">Bilans reçus pendant cette session — aucun stockage persistant</p>
+        </div>
+        <div class="pro-actions">
+          <button class="btn-csv" id="btn-csv" onclick="exportCSV()" disabled>⬇ Exporter CSV</button>
+          <button class="btn-logout" onclick="doProLogout()">Déconnexion</button>
+        </div>
+      </div>
+
+      <div style="background:var(--amber-pale);border:1px solid #f0c060;border-radius:7px;padding:12px 16px;margin-bottom:20px;font-size:12px;color:var(--gray-5);line-height:1.6;">
+        ℹ️ <strong>Architecture sans stockage persistant :</strong> les bilans affichés ici sont ceux reçus au cours de la présente session navigateur. Ils seront automatiquement supprimés à la fermeture de l'onglet. Pour une conservation sécurisée, exportez le CSV ou imprimez les fiches PDF avant de fermer.
+      </div>
+
+      <div class="stats-row" id="pro-stats"></div>
+
+      <!-- Onglets Initiale / Suivi -->
+      <div style="display:flex;gap:0;margin-bottom:0;border-bottom:2px solid var(--gray-2);">
+        <button id="tab-btn-initial" onclick="switchProTab('initial')" style="padding:10px 22px;border:none;background:var(--navy);color:#fff;font-family:'Source Sans 3',sans-serif;font-size:13px;font-weight:600;cursor:pointer;border-radius:8px 8px 0 0;margin-right:4px;">Consultations initiales</button>
+        <button id="tab-btn-suivi" onclick="switchProTab('suivi')" style="padding:10px 22px;border:none;background:var(--gray-2);color:var(--gray-5);font-family:'Source Sans 3',sans-serif;font-size:13px;font-weight:600;cursor:pointer;border-radius:8px 8px 0 0;">Consultations de suivi</button>
+      </div>
+      <div class="records-table" id="pro-records" style="border-radius:0 var(--radius) var(--radius) var(--radius);"></div>
+      <div id="pro-detail" style="display:none;margin-top:20px;"></div>
+
+      <!-- Gestion des identifiants -->
+      <div style="margin-top:32px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+          <div>
+            <div style="font-family:'Playfair Display',serif;font-size:16px;color:var(--navy);">Gestion des identifiants</div>
+            <div style="font-size:12px;color:var(--gray-4);margin-top:2px;">Modifiez votre identifiant et mot de passe de connexion</div>
+          </div>
+          <button onclick="toggleCredPanel()" id="btn-toggle-creds"
+            style="background:transparent;border:1px solid var(--gray-3);border-radius:20px;padding:6px 14px;cursor:pointer;font-size:12px;color:var(--gray-4);font-family:'Source Sans 3',sans-serif;">
+            🔑 Modifier
+          </button>
+        </div>
+
+        <div id="cred-panel" style="display:none;background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px;">
+          <div id="cred-success" style="display:none;background:var(--green-pale);border:1px solid #b7ddc0;border-radius:7px;padding:11px 14px;font-size:13px;color:var(--green);margin-bottom:14px;">
+            ✅ Identifiants mis à jour avec succès. Ils seront actifs dès la prochaine connexion.
+          </div>
+          <div id="cred-error" style="display:none;background:var(--red-pale);border:1px solid #f0b0b0;border-radius:7px;padding:11px 14px;font-size:13px;color:var(--red);margin-bottom:14px;"></div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+            <div class="form-group" style="margin:0;">
+              <label>Nouvel identifiant <span class="req">*</span></label>
+              <input type="text" id="new-user" placeholder="Votre nouvel identifiant" autocomplete="off">
+            </div>
+            <div class="form-group" style="margin:0;">
+              <label>Confirmation identifiant <span class="req">*</span></label>
+              <input type="text" id="new-user-confirm" placeholder="Confirmez l'identifiant" autocomplete="off">
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+            <div class="form-group" style="margin:0;">
+              <label>Nouveau mot de passe <span class="req">*</span></label>
+              <input type="password" id="new-pass" placeholder="Minimum 8 caractères">
+            </div>
+            <div class="form-group" style="margin:0;">
+              <label>Confirmer le mot de passe <span class="req">*</span></label>
+              <input type="password" id="new-pass-confirm" placeholder="Répétez le mot de passe">
+            </div>
+          </div>
+
+          <div style="background:var(--amber-pale);border-left:3px solid var(--amber);padding:10px 14px;border-radius:0 7px 7px 0;font-size:12px;color:var(--gray-5);margin-bottom:16px;line-height:1.6;">
+            ⚠️ <strong>Important :</strong> les nouveaux identifiants sont enregistrés localement dans ce navigateur. Si vous utilisez un autre navigateur ou un autre ordinateur, les identifiants d'origine seront requis.
+          </div>
+
+          <div style="display:flex;gap:10px;">
+            <button onclick="saveCredentials()"
+              style="flex:1;padding:11px;background:var(--navy);color:#fff;border:none;border-radius:7px;font-family:'Source Sans 3',sans-serif;font-size:14px;font-weight:600;cursor:pointer;">
+              Enregistrer les nouveaux identifiants
+            </button>
+            <button onclick="toggleCredPanel()"
+              style="padding:11px 18px;background:transparent;border:1px solid var(--gray-3);border-radius:7px;cursor:pointer;font-size:13px;color:var(--gray-4);font-family:'Source Sans 3',sans-serif;">
+              Annuler
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<footer>
+  <p>Centre du Sommeil — Clinique Les Peupliers · 109 Rue d'Hem, 59491 Villeneuve-d'Ascq · 03 20 05 70 00</p>
+  <p style="margin-top:6px;">
+    <a href="#" onclick="switchTab('infos')">Mentions légales</a> ·
+    <a href="#" onclick="switchTab('infos')">Données personnelles</a> ·
+    <a href="#" onclick="switchTab('infos')">Conditions d'utilisation</a>
+  </p>
+  <p style="margin-top:6px;font-size:11px;opacity:.5;">Site médical — Hébergement HDS requis avant traitement de données réelles de patients</p>
+</footer>
+
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ══════════════════════════════════════════════
+// MOBILE MENU
+// ══════════════════════════════════════════════
+function toggleMenu() {
+  const btn    = document.getElementById('hamburger-btn');
+  const drawer = document.getElementById('nav-drawer');
+  const isOpen = drawer.classList.toggle('open');
+  btn.classList.toggle('open', isOpen);
+  btn.setAttribute('aria-expanded', isOpen);
+}
+function closeMenu() {
+  document.getElementById('hamburger-btn').classList.remove('open');
+  document.getElementById('nav-drawer').classList.remove('open');
+}
+
+// ══════════════════════════════════════════════
+// NAV
+// ══════════════════════════════════════════════
+function switchTab(tab) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  // Sync both desktop nav and mobile drawer
+  document.querySelectorAll('.nav-bar .nav-tab, .nav-drawer .nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('page-' + tab).classList.add('active');
+  const map = { accueil:'accueil', explorations:'explor', questionnaires:'questionnaire', parcours:'parcours', infos:'infos', pro:'pro' };
+  document.querySelectorAll('.nav-bar .nav-tab, .nav-drawer .nav-tab').forEach(t => {
+    if (t.textContent.toLowerCase().includes(map[tab]||tab)) t.classList.add('active');
+  });
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (tab === 'pro' && isProLoggedIn) renderProDashboard();
+}
+
+// ══════════════════════════════════════════════
+// QUESTIONNAIRE FLOW
+// ══════════════════════════════════════════════
+let currentQType = null;
+let patientInfo = {};
+
+function toggleNomJF() {
+  const sexe = document.getElementById('id-sexe').value;
+  document.getElementById('nom-jf-group').style.display = sexe === 'F' ? 'block' : 'none';
+}
+
+function startQuestionnaire(type) {
+  currentQType = type;
+  document.getElementById('q-choice-panel').style.display = 'none';
+  document.getElementById('q-id-gate').style.display = 'block';
+  document.getElementById('q-form-panel').style.display = 'none';
+  document.getElementById('q-results-panel').style.display = 'none';
+  const titles = { initial:'Consultation initiale — Identification', suivi:'Consultation de suivi — Identification' };
+  document.getElementById('id-gate-title').textContent = titles[type] || 'Identification';
+}
+
+function openSomnora() {
+  // Masquer tous les autres panneaux
+  document.getElementById('q-choice-panel').style.display = 'none';
+  document.getElementById('q-id-gate').style.display = 'none';
+  document.getElementById('q-form-panel').style.display = 'none';
+  document.getElementById('q-results-panel').style.display = 'none';
+
+  // Afficher le panneau Somnora
+  const panel = document.getElementById('somnora-panel');
+  panel.style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  // Détection du blocage iframe après chargement
+  const iframe = document.getElementById('somnora-iframe');
+  const fallback = document.getElementById('somnora-fallback');
+
+  // Méthode 1 : erreur de chargement
+  iframe.onerror = function() {
+    iframe.style.display = 'none';
+    fallback.style.display = 'flex';
+  };
+
+  // Méthode 2 : timeout — si l'iframe reste vide après 5s (X-Frame-Options bloqué)
+  const checkTimer = setTimeout(function() {
+    try {
+      // Tente d'accéder au contenu : lève une exception si cross-origin bloqué
+      const doc = iframe.contentDocument || iframe.contentWindow.document;
+      if (!doc || !doc.body || doc.body.innerHTML.trim() === '') {
+        iframe.style.display = 'none';
+        fallback.style.display = 'flex';
+      }
+    } catch(e) {
+      // Cross-origin bloqué = X-Frame-Options actif → fallback
+      iframe.style.display = 'none';
+      fallback.style.display = 'flex';
+    }
+  }, 5000);
+
+  // Si l'iframe charge bien, annuler le timer
+  iframe.onload = function() {
+    clearTimeout(checkTimer);
+    try {
+      const doc = iframe.contentDocument || iframe.contentWindow.document;
+      if (doc && doc.body && doc.body.innerHTML.trim() !== '') {
+        // Chargé normalement — iframe visible
+        iframe.style.display = 'block';
+        fallback.style.display = 'none';
+      }
+    } catch(e) {
+      // Cross-origin bloqué au moment du load
+      iframe.style.display = 'none';
+      fallback.style.display = 'flex';
+    }
+  };
+}
+
+function closeSomnora() {
+  document.getElementById('somnora-panel').style.display = 'none';
+  // Réinitialiser l'iframe pour éviter de garder une connexion active
+  const iframe = document.getElementById('somnora-iframe');
+  iframe.src = '';
+  setTimeout(() => { iframe.src = 'https://somnora.lovable.app'; }, 100);
+  // Réafficher le choix
+  document.getElementById('q-choice-panel').style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function showChoicePanel() {
+  document.getElementById('q-choice-panel').style.display = 'block';
+  document.getElementById('q-id-gate').style.display = 'none';
+  document.getElementById('q-form-panel').style.display = 'none';
+  document.getElementById('q-results-panel').style.display = 'none';
+  document.getElementById('somnora-panel').style.display = 'none';
+}
+
+function validateIdentity() {
+  const nom = document.getElementById('id-nom').value.trim();
+  const prenom = document.getElementById('id-prenom').value.trim();
+  const ddn = document.getElementById('id-ddn').value;
+  const sexe = document.getElementById('id-sexe').value;
+  const email = document.getElementById('id-email').value.trim();
+  const nomJf = document.getElementById('id-nom-jf').value.trim();
+  const consent = document.getElementById('consent-check').checked;
+  const alert = document.getElementById('id-alert');
+
+  if (!nom || !prenom || !ddn || !sexe || !email || !consent || (sexe === 'F' && !nomJf)) {
+    alert.style.display = 'block';
+    return;
+  }
+  alert.style.display = 'none';
+  patientInfo = { nom, prenom, ddn, sexe, email, nomJf: sexe === 'F' ? nomJf : '' };
+  document.getElementById('q-id-gate').style.display = 'none';
+  document.getElementById('q-form-panel').style.display = 'block';
+  renderQuestionnaireForm(currentQType);
+}
+
+// Formate YYYY-MM-DD → JJ/MM/AAAA
+function formatDDN(val) {
+  if (!val) return '—';
+  const parts = val.split('-');
+  if (parts.length === 3) return `${parts[2]}/${parts[1]}/${parts[0]}`;
+  return val;
+}
+
+// ══════════════════════════════════════════════
+// QUESTIONNAIRE DATA
+// ══════════════════════════════════════════════
+const epworthQ = [
+  "Assis en train de lire",
+  "Regarder la télévision",
+  "Assis, inactif dans un lieu public (réunion, cinéma…)",
+  "Comme passager dans une voiture roulant une heure sans arrêt",
+  "Allongé pour vous reposer l'après-midi quand les circonstances le permettent",
+  "Assis en train de parler à quelqu'un",
+  "Assis tranquillement après un repas sans alcool",
+  "Dans une voiture immobilisée quelques minutes dans un embouteillage"
+];
+const epworthLabels = ["Jamais (0)","Légère (1)","Modérée (2)","Élevée (3)"];
+
+const pichotQ = [
+  "Manque d'entrain","Fatigabilité rapide","Difficultés de concentration",
+  "Manque de motivation pour entamer quoi que ce soit",
+  "Manque d'énergie, sensation d'être à plat",
+  "Efforts nécessaires pour accomplir les activités habituelles",
+  "Nécessité de lutter contre le sommeil lors des activités habituelles",
+  "Sensation de faiblesse, de mollesse"
+];
+const pichotLabels = ["Pas du tout (0)","Un peu (1)","Modérément (2)","Beaucoup (3)","Extrêmement (4)"];
+
+const isiQ = [
+  { text:"Difficulté à vous endormir", opts:["Aucune","Légère","Modérée","Sévère","Très sévère"], scores:[0,1,2,3,4] },
+  { text:"Difficulté à rester endormi(e)", opts:["Aucune","Légère","Modérée","Sévère","Très sévère"], scores:[0,1,2,3,4] },
+  { text:"Problème de réveil trop tôt le matin", opts:["Aucun","Léger","Modéré","Sévère","Très sévère"], scores:[0,1,2,3,4] },
+  { text:"Satisfaction de votre sommeil actuel", opts:["Très satisfait","Satisfait","Neutre","Insatisfait","Très insatisfait"], scores:[0,1,2,3,4] },
+  { text:"Dans quelle mesure considérez-vous que votre trouble du sommeil est perceptible par votre entourage (qualité de vie, fatigue, humeur, concentration...)", opts:["Pas du tout","Un peu","Quelque peu","Beaucoup","Énormément"], scores:[0,1,2,3,4] },
+  { text:"Dans quelle mesure êtes-vous préoccupé(e) par votre trouble du sommeil actuel", opts:["Pas du tout","Un peu","Quelque peu","Beaucoup","Énormément"], scores:[0,1,2,3,4] },
+  { text:"Dans quelle mesure votre trouble du sommeil interfère-t-il avec votre fonctionnement quotidien (fatigue diurne, capacité à travailler, concentration, mémoire, humeur...)", opts:["Pas du tout","Un peu","Quelque peu","Beaucoup","Enormément"], scores:[0,1,2,3,4] }
+];
+
+const meqQ = [
+  { text:"À quelle heure environ préféreriez-vous vous lever si vous étiez totalement libre d'organiser votre journée ?", opts:["5h00 – 6h30","6h30 – 7h45","7h45 – 9h45","9h45 – 11h00","11h00 – 12h00"], scores:[5,4,3,2,1] },
+  { text:"À quelle heure environ préféreriez-vous aller vous coucher si vous étiez totalement libre d'organiser votre soirée ?", opts:["20h00 – 21h00","21h00 – 22h15","22h15 – 0h30","0h30 – 1h45","1h45 – 3h00"], scores:[5,4,3,2,1] },
+  { text:"Si vous devez vous lever à 7h00, dans quelle mesure dépendez-vous de votre réveil ?", opts:["Pas du tout","Légèrement","Assez","Beaucoup","Ne pourrait pas se lever sans"], scores:[4,3,2,1,0] },
+  { text:"Dans quelle mesure trouvez-vous facile de vous lever le matin ?", opts:["Pas du tout facile","Pas très facile","Assez facile","Très facile"], scores:[0,1,2,3] },
+  { text:"Comment vous sentez-vous pendant la première demi-heure suivant votre lever ?", opts:["Pas du tout en forme","Peu en forme","Assez en forme","Très en forme"], scores:[0,1,2,3] },
+  { text:"Si vous pouviez choisir librement votre horaire de travail (5h de travail consécutives), quelle plage horaire choisiriez-vous ?", opts:["5h–10h","8h–13h","9h–14h","14h–19h","17h–22h"], scores:[5,4,3,2,1] },
+  { text:"À quelle heure vous sentez-vous au mieux de votre forme ?", opts:["5h–8h","8h–10h","10h–17h","17h–22h","22h–5h"], scores:[4,3,2,1,0] },
+  { text:"À quel type de personne appartenez-vous ?", opts:["Nettement du matin","Plutôt du matin","Plutôt du soir","Nettement du soir"], scores:[3,2,1,0] },
+  { text:"Combien de temps avez-vous besoin pour être pleinement éveillé(e) après le lever ?", opts:["0–10 min","11–20 min","21–40 min","Plus de 40 min"], scores:[3,2,1,0] },
+  { text:"Avez-vous faim dans l'heure qui suit votre lever ?", opts:["Très bonne appétit","Assez bon appétit","Appétit médiocre","Pas d'appétit du tout"], scores:[3,2,1,0] }
+];
+
+const hadQ = [
+  { text:"Je me sens tendu(e) ou énervé(e) :", type:"A", opts:["La plupart du temps","Souvent","De temps en temps","Jamais"], scores:[3,2,1,0] },
+  { text:"Je prends du plaisir aux mêmes choses qu'autrefois :", type:"D", opts:["Oui, tout autant","Pas autant","Un peu seulement","Presque plus"], scores:[0,1,2,3] },
+  { text:"J'ai une sensation de peur comme si quelque chose d'horrible allait m'arriver :", type:"A", opts:["Oui, très nettement","Oui, mais ce n'est pas trop grave","Un peu, mais cela ne m'inquiète pas","Pas du tout"], scores:[3,2,1,0] },
+  { text:"Je ris facilement et vois le bon côté des choses :", type:"D", opts:["Autant que par le passé","Plutôt moins","Vraiment moins qu'avant","Plus du tout"], scores:[0,1,2,3] },
+  { text:"Je me fais du souci :", type:"A", opts:["Très souvent","Assez souvent","Occasionnellement","Très occasionnellement"], scores:[3,2,1,0] },
+  { text:"Je suis de bonne humeur :", type:"D", opts:["Jamais","Rarement","Assez souvent","La plupart du temps"], scores:[3,2,1,0] },
+  { text:"Je peux rester tranquillement assis(e) à ne rien faire et me sentir décontracté(e) :", type:"A", opts:["Oui, quoiqu'il arrive","Oui, en général","Rarement","Jamais"], scores:[0,1,2,3] },
+  { text:"J'ai l'impression de fonctionner au ralenti :", type:"D", opts:["Presque toujours","Très souvent","Parfois","Jamais"], scores:[3,2,1,0] },
+  { text:"J'éprouve des sensations d'angoisse et j'ai l'estomac noué ou une boule dans la gorge :", type:"A", opts:["Jamais","Parfois","Assez souvent","Très souvent"], scores:[0,1,2,3] },
+  { text:"J'ai perdu l'intérêt pour mon apparence :", type:"D", opts:["Totalement","Je n'y fais plus attention","Je n'y fais plus assez attention","J'y fais attention comme d'habitude"], scores:[3,2,1,0] },
+  { text:"J'ai la bougeotte et n'arrive pas à tenir en place :", type:"A", opts:["Oui, c'est tout à fait le cas","Un peu","Pas tellement","Pas du tout"], scores:[3,2,1,0] },
+  { text:"J'envisage l'avenir avec optimisme :", type:"D", opts:["Comme d'habitude","Plutôt moins qu'avant","Beaucoup moins qu'avant","Pas du tout"], scores:[0,1,2,3] },
+  { text:"J'éprouve des sensations soudaines de panique :", type:"A", opts:["Vraiment très souvent","Assez souvent","Pas très souvent","Jamais"], scores:[3,2,1,0] },
+  { text:"Je peux prendre plaisir à un bon livre ou à une bonne émission radio ou de télévision :", type:"D", opts:["Souvent","Assez souvent","Rarement","Très rarement"], scores:[0,1,2,3] }
+];
+
+const hamiltonQ = [
+  { text:"Humeur dépressive (tristesse, sans espoir, impuissant, inutile) :", opts:["Absente","Signalée seulement si interrogé","Signalée spontanément","Le patient la communique non verbalement","Le patient ne communique pratiquement que cela"], scores:[0,1,2,3,4] },
+  { text:"Sentiments de culpabilité :", opts:["Absents","S'en veut à lui-même, a l'impression d'avoir causé un préjudice","Idées de culpabilité, ruminations sur des erreurs passées","La maladie est une punition. Idées délirantes de culpabilité","Entend des voix qui l'accusent / hallucinations menaçantes"], scores:[0,1,2,3,4] },
+  { text:"Suicide :", opts:["Absent","Impression que la vie ne vaut pas la peine d'être vécue","Souhaite être mort ou pense à la possibilité de mourir","Idées ou gestes suicidaires","Tentatives de suicide"], scores:[0,1,2,3,4] },
+  { text:"Insomnie du début de nuit :", opts:["Pas de difficulté à s'endormir","Difficultés éventuelles (> 30 min)","Difficultés chaque soir"], scores:[0,1,2] },
+  { text:"Insomnie du milieu de nuit :", opts:["Pas de difficulté","Agité et troublé pendant la nuit","Se réveille la nuit (tout lever = 2)"], scores:[0,1,2] },
+  { text:"Insomnie de fin de nuit :", opts:["Pas de difficulté","Se réveille tôt mais se rendort","Incapable de se rendormir s'il se lève"], scores:[0,1,2] },
+  { text:"Travail et activités :", opts:["Pas de difficulté","Pensées d'incapacité, fatigue liée aux activités","Perte d'intérêt pour les activités (apathie, indécision)","Diminution du temps consacré aux activités / productivité réduite","A arrêté de travailler en raison de la dépression"], scores:[0,1,2,3,4] },
+  { text:"Ralentissement (pensée, langage, motricité) :", opts:["Normal","Léger ralentissement","Ralentissement manifeste","Entretien difficile","Stupeur complète"], scores:[0,1,2,3,4] },
+  { text:"Agitation :", opts:["Aucune","Crispations","Joue avec ses mains/cheveux…","Bouge sans arrêt","Se tord les mains, ronge ses ongles…"], scores:[0,1,2,3,4] },
+  { text:"Anxiété psychique :", opts:["Aucun trouble","Tension subjective et irritabilité","Se fait du souci pour des problèmes mineurs","Attitude inquiète visible","Peurs exprimées spontanément"], scores:[0,1,2,3,4] },
+  { text:"Anxiété somatique :", opts:["Absente","Légère","Modérée","Sévère","Incapacitante"], scores:[0,1,2,3,4] },
+  { text:"Symptômes somatiques gastro-intestinaux :", opts:["Aucun","Perte d'appétit / lourdeur abdominale","Difficulté à manger sans encouragement / demande laxatifs"], scores:[0,1,2] },
+  { text:"Symptômes somatiques généraux :", opts:["Aucun","Lourdeur dans les membres / dorsalgies / perte d'énergie","Symptômes nettement marqués"], scores:[0,1,2] },
+  { text:"Symptômes génitaux (perte de libido, troubles menstruels) :", opts:["Absents","Légers","Sévères"], scores:[0,1,2] },
+  { text:"Hypochondrie :", opts:["Absente","Préoccupé par lui-même","Préoccupé par sa santé","Se plaint fréquemment…","Idées délirantes hypochondriaques"], scores:[0,1,2,3,4] },
+  { text:"Perte de poids :", opts:["Pas de perte de poids","Perte de poids probable liée à la maladie","Perte de poids certaine"], scores:[0,1,2] },
+  { text:"Prise de conscience de la maladie :", opts:["Reconnaît être déprimé et malade","Reconnaît être malade mais attribue à autre chose","Nie être malade"], scores:[0,1,2] }
+];
+
+// ══════════════════════════════════════════════
+// STATE
+// ══════════════════════════════════════════════
+let answers = {};
+
+function initAnswers(type) {
+  answers = {};
+  if (type === 'initial') {
+    answers.epworth = new Array(8).fill(null);
+    answers.pichot  = new Array(8).fill(null);
+    answers.isi     = new Array(7).fill(null);
+    answers.meq     = new Array(10).fill(null);
+    answers.hadA    = new Array(7).fill(null);
+    answers.hadD    = new Array(7).fill(null);
+    answers.hadRaw  = new Array(14).fill(null);
+  } else {
+    answers.epworth  = new Array(8).fill(null);
+    answers.pichot   = new Array(8).fill(null);
+    answers.hamilton = new Array(17).fill(null);
+  }
+}
+
+function setAns(scale, idx, val, btn) {
+  answers[scale][idx] = val;
+  btn.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  updateProgress();
+}
+
+function setHadAns(idx, val, btn) {
+  answers.hadRaw[idx] = val;
+  btn.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  // recalc hadA / hadD split
+  hadQ.forEach((q,i) => {
+    if (answers.hadRaw[i] !== null) {
+      if (q.type === 'A') answers.hadA[hadQ.filter((x,j)=>j<=i&&x.type==='A').length-1] = answers.hadRaw[i];
+      else               answers.hadD[hadQ.filter((x,j)=>j<=i&&x.type==='D').length-1] = answers.hadRaw[i];
+    }
+  });
+  updateProgress();
+}
+
+// ══════════════════════════════════════════════
+// RENDER FORM
+// ══════════════════════════════════════════════
+function renderQuestionnaireForm(type) {
+  initAnswers(type);
+  const panel = document.getElementById('q-form-panel');
+  let html = `<button class="btn-back" onclick="showChoicePanel()">← Retour</button>`;
+
+  if (type === 'initial') {
+    html += renderCardSection('1. Échelle de Somnolence d\'Epworth',
+      'Dans quelle mesure risquez-vous de vous assoupir ou de vous endormir dans les situations suivantes (entre environ 9h et 21h) ?',
+      renderEpworthQ());
+    html += renderCardSection('2. Questionnaire de Pichot — Fatigue',
+      'Au cours des 8 derniers jours, dans quelle mesure avez-vous ressenti les éléments suivants ? (0 = pas du tout · 4 = extrêmement)',
+      renderPichotQ());
+    html += renderCardSection('3. Index de Sévérité de l\'Insomnie (ISI)',
+      'Pour chaque question, choisissez le chiffre qui décrit le mieux votre situation au cours des 2 dernières semaines.',
+      renderISIQ());
+    html += renderCardSection('4. Chronotype — MEQ de Horne & Östberg',
+      'Ce questionnaire évalue votre type circadien (chronotype). Répondez selon votre préférence naturelle, sans contraintes professionnelles.',
+      renderMEQQ());
+    html += renderCardSection('5. Échelle HAD — Retentissement émotionnel',
+      'Lisez chaque question et cochez la réponse qui exprime le mieux ce que vous avez éprouvé au cours de la semaine écoulée.',
+      renderHADQ());
+  } else {
+    html += renderCardSection('1. Échelle de Somnolence d\'Epworth',
+      'Dans quelle mesure risquez-vous de vous assoupir ou de vous endormir dans les situations suivantes (entre environ 9h et 21h) ?',
+      renderEpworthQ());
+    html += renderCardSection('2. Questionnaire de Pichot — Fatigue',
+      'Au cours des 8 derniers jours, dans quelle mesure avez-vous ressenti les éléments suivants ?',
+      renderPichotQ());
+    html += renderCardSection('3. Échelle de Hamilton — Dépression (HAM-D 17)',
+      'Ce questionnaire est rempli lors de la consultation de suivi pour évaluer l\'évolution des symptômes dépressifs.',
+      renderHamiltonQ());
+  }
+
+  const total = countTotalQ(type);
+  html += `
+    <div style="background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px;margin-bottom:20px;">
+      <div class="progress-wrap"><div class="progress-fill" id="prog-fill" style="width:0%"></div></div>
+      <div class="progress-label" id="prog-label">0 / ${total} réponses</div>
+    </div>
+    <div id="q-alert" class="form-alert">⚠️ Merci de répondre à toutes les questions avant de soumettre.</div>
+    <button class="btn-submit-q" onclick="submitQuestionnaire()">Calculer mes résultats →</button>`;
+  panel.innerHTML = html;
+}
+
+function renderCardSection(title, subtitle, content) {
+  return `<div class="card"><div class="card-header"><h2>${title}</h2><p>${subtitle}</p></div><div class="card-body">${content}</div></div>`;
+}
+
+function renderEpworthQ() {
+  return epworthQ.map((q,i) => `
+    <div class="question-block">
+      <div class="question-text"><span class="question-num">${i+1}</span>${q}</div>
+      <div class="options-row">
+        ${epworthLabels.map((l,v) => `<button class="opt-btn" onclick="setAns('epworth',${i},${v},this)">${l}</button>`).join('')}
+      </div>
+    </div>`).join('');
+}
+
+function renderPichotQ() {
+  return pichotQ.map((q,i) => `
+    <div class="question-block">
+      <div class="question-text"><span class="question-num">${i+1}</span>${q}</div>
+      <div class="options-row">
+        ${pichotLabels.map((l,v) => `<button class="opt-btn" onclick="setAns('pichot',${i},${v},this)">${l}</button>`).join('')}
+      </div>
+    </div>`).join('');
+}
+
+function renderISIQ() {
+  return isiQ.map((q,i) => `
+    <div class="question-block">
+      <div class="question-text"><span class="question-num">${i+1}</span>${q.text}</div>
+      <div class="options-row">
+        ${q.opts.map((l,j) => `<button class="opt-btn" onclick="setAns('isi',${i},${q.scores[j]},this)">${l}<span class="opt-score">${q.scores[j]}</span></button>`).join('')}
+      </div>
+    </div>`).join('');
+}
+
+function renderMEQQ() {
+  return meqQ.map((q,i) => `
+    <div class="question-block">
+      <div class="question-text"><span class="question-num">${i+1}</span>${q.text}</div>
+      <div class="options-row" style="flex-direction:column;gap:5px;">
+        ${q.opts.map((l,j) => `<button class="opt-btn" style="text-align:left;flex:none;width:100%;" onclick="setAns('meq',${i},${q.scores[j]},this)">${l}</button>`).join('')}
+      </div>
+    </div>`).join('');
+}
+
+function renderHADQ() {
+  return hadQ.map((q,i) => {
+    const badge = q.type==='A'
+      ? '<span style="background:#eef3fa;color:#1a3a5c;padding:2px 7px;border-radius:10px;font-size:11px;font-weight:600;margin-left:6px;">A</span>'
+      : '<span style="background:#edf7ef;color:#1e7b6e;padding:2px 7px;border-radius:10px;font-size:11px;font-weight:600;margin-left:6px;">D</span>';
+    return `
+      <div class="question-block">
+        <div class="question-text"><span class="question-num">${i+1}</span>${q.text} ${badge}</div>
+        <div class="had-row">
+          ${q.opts.map((l,j) => `<button class="had-opt" onclick="setHadAns(${i},${q.scores[j]},this)">${l}</button>`).join('')}
+        </div>
+      </div>`;
+  }).join('');
+}
+
+function renderHamiltonQ() {
+  return hamiltonQ.map((q,i) => `
+    <div class="question-block">
+      <div class="question-text"><span class="question-num">${i+1}</span>${q.text}</div>
+      <div class="options-row" style="flex-direction:column;gap:5px;">
+        ${q.opts.map((l,j) => `<button class="opt-btn" style="text-align:left;flex:none;width:100%;font-size:12px;" onclick="setAns('hamilton',${i},${q.scores[j]},this)"><span style="min-width:20px;display:inline-block;color:var(--gray-4);font-weight:600;">${q.scores[j]}</span> — ${l}</button>`).join('')}
+      </div>
+    </div>`).join('');
+}
+
+function countTotalQ(type) {
+  return type === 'initial' ? 8+8+7+10+14 : 8+8+17;
+}
+
+function countAnswered() {
+  let n = 0;
+  Object.values(answers).forEach(arr => {
+    if (Array.isArray(arr) && arr[0] !== undefined && !['hadA','hadD'].some(k => answers[k] === arr)) {
+      n += arr.filter(v => v !== null).length;
+    }
+  });
+  // special: had is split, count hadRaw
+  if (answers.hadRaw) {
+    const base = (answers.epworth?.filter(v=>v!==null).length||0)
+               + (answers.pichot?.filter(v=>v!==null).length||0)
+               + (answers.isi?.filter(v=>v!==null).length||0)
+               + (answers.meq?.filter(v=>v!==null).length||0)
+               + answers.hadRaw.filter(v=>v!==null).length;
+    return base;
+  }
+  return (answers.epworth?.filter(v=>v!==null).length||0)
+       + (answers.pichot?.filter(v=>v!==null).length||0)
+       + (answers.hamilton?.filter(v=>v!==null).length||0);
+}
+
+function updateProgress() {
+  const total = countTotalQ(currentQType);
+  const done  = countAnswered();
+  const pct   = Math.round((done/total)*100);
+  const fill  = document.getElementById('prog-fill');
+  const lbl   = document.getElementById('prog-label');
+  if (fill) fill.style.width = pct + '%';
+  if (lbl)  lbl.textContent  = `${done} / ${total} réponses`;
+}
+
+// ══════════════════════════════════════════════
+// SCORING
+// ══════════════════════════════════════════════
+function sum(arr) { return (arr||[]).reduce((a,v) => a + (v||0), 0); }
+
+function interpEpworth(s) {
+  if (s<=10) return {label:'Normal',cls:'normal',txt:'Somnolence diurne dans les limites normales.'};
+  if (s<=15) return {label:'Somnolence modérée',cls:'mild',txt:'Somnolence légère à modérée — consultation recommandée.'};
+  if (s<=20) return {label:'Somnolence sévère',cls:'moderate',txt:'Somnolence sévère — risque augmenté d\'endormissement.'};
+  return {label:'Somnolence très sévère',cls:'severe',txt:'Conduite déconseillée jusqu\'à prise en charge.'};
+}
+function interpPichot(s) {
+  if (s<=10) return {label:'Fatigue normale',cls:'normal',txt:'Pas de fatigue pathologique significative.'};
+  if (s<=17) return {label:'Fatigue modérée',cls:'mild',txt:'Fatigue modérée pouvant altérer la vigilance.'};
+  if (s<=24) return {label:'Fatigue sévère',cls:'moderate',txt:'Fatigue sévère — impact probable sur la conduite.'};
+  return {label:'Fatigue très sévère',cls:'severe',txt:'Fatigue extrême — conduite déconseillée.'};
+}
+function interpISI(s) {
+  if (s<=7)  return {label:'Absence d\'insomnie',cls:'normal',txt:'Pas d\'insomnie cliniquement significative.'};
+  if (s<=14) return {label:'Insomnie légère',cls:'mild',txt:'Insomnie légère sous le seuil clinique.'};
+  if (s<=21) return {label:'Insomnie modérée',cls:'moderate',txt:'Insomnie cliniquement significative — prise en charge recommandée.'};
+  return {label:'Insomnie sévère',cls:'severe',txt:'Insomnie sévère — prise en charge urgente.'};
+}
+function interpMEQ(s) {
+  if (s<=30) return {label:'Nettement du soir',cls:'mild',txt:'Type vespéral — préférence marquée pour les horaires tardifs.'};
+  if (s<=41) return {label:'Plutôt du soir',cls:'mild',txt:'Chronotype modérément vespéral.'};
+  if (s<=58) return {label:'Type intermédiaire',cls:'normal',txt:'Pas de préférence circadienne marquée.'};
+  if (s<=69) return {label:'Plutôt du matin',cls:'normal',txt:'Chronotype modérément matinal.'};
+  return {label:'Nettement du matin',cls:'normal',txt:'Type matinal — préférence marquée pour les horaires matinaux.'};
+}
+function interpHadA(s) {
+  if (s<=7)  return {label:'Absence (A)',cls:'normal',txt:'Score ≤ 7 : pas d\'anxiété significative.'};
+  if (s<=10) return {label:'Cas douteux (A)',cls:'mild',txt:'Score 8-10 : anxiété à surveiller.'};
+  return {label:'Cas certain (A)',cls:'severe',txt:'Score ≥ 11 : anxiété cliniquement significative.'};
+}
+function interpHadD(s) {
+  if (s<=7)  return {label:'Absence (D)',cls:'normal',txt:'Score ≤ 7 : pas de dépression significative.'};
+  if (s<=10) return {label:'Cas douteux (D)',cls:'mild',txt:'Score 8-10 : dépression à surveiller.'};
+  return {label:'Cas certain (D)',cls:'severe',txt:'Score ≥ 11 : dépression cliniquement significative.'};
+}
+function interpHamilton(s) {
+  if (s<8)   return {label:'Absence de dépression',cls:'normal',txt:'HAM-D < 8 : pas de dépression.'};
+  if (s<=13) return {label:'Dépression légère',cls:'mild',txt:'HAM-D 8-13 : dépression légère.'};
+  if (s<=18) return {label:'Dépression modérée',cls:'moderate',txt:'HAM-D 14-18 : prise en charge recommandée.'};
+  if (s<=22) return {label:'Dépression sévère',cls:'severe',txt:'HAM-D 19-22 : consultation psychiatrique urgente.'};
+  return {label:'Dépression très sévère',cls:'severe',txt:'HAM-D > 22 : prise en charge spécialisée immédiate.'};
+}
+
+// ══════════════════════════════════════════════
+// SUBMIT
+// ══════════════════════════════════════════════
+function submitQuestionnaire() {
+  // Validate all answered
+  const allDone = currentQType === 'initial'
+    ? (answers.epworth.every(v=>v!==null) && answers.pichot.every(v=>v!==null) &&
+       answers.isi.every(v=>v!==null) && answers.meq.every(v=>v!==null) &&
+       answers.hadRaw.every(v=>v!==null))
+    : (answers.epworth.every(v=>v!==null) && answers.pichot.every(v=>v!==null) &&
+       answers.hamilton.every(v=>v!==null));
+
+  const alert = document.getElementById('q-alert');
+  if (!allDone) { alert.style.display = 'block'; alert.scrollIntoView({behavior:'smooth',block:'center'}); return; }
+  alert.style.display = 'none';
+  buildAndShowResults();
+}
+
+function buildAndShowResults() {
+  document.getElementById('q-form-panel').style.display = 'none';
+  const panel = document.getElementById('q-results-panel');
+  panel.style.display = 'block';
+
+  const eS   = sum(answers.epworth);
+  const pS   = sum(answers.pichot);
+  const eI   = interpEpworth(eS);
+  const pI   = interpPichot(pS);
+
+  let items = [
+    {name:'Epworth (/24)', score:eS, maxS:24, interp:eI},
+    {name:'Pichot (/32)',  score:pS, maxS:32, interp:pI},
+  ];
+  let recs = [], allInterps = [eI, pI];
+
+  if (currentQType === 'initial') {
+    const iS  = sum(answers.isi);
+    const mS  = sum(answers.meq);
+    const hAS = sum(answers.hadA);
+    const hDS = sum(answers.hadD);
+    const iI  = interpISI(iS);
+    const mI  = interpMEQ(mS);
+    const hAI = interpHadA(hAS);
+    const hDI = interpHadD(hDS);
+    items.push(
+      {name:'ISI — Insomnie (/28)',       score:iS,  maxS:28, interp:iI},
+      {name:'MEQ — Chronotype (/43)',      score:mS,  maxS:43, interp:mI},
+      {name:'HAD — Anxiété (/21)',         score:hAS, maxS:21, interp:hAI},
+      {name:'HAD — Dépression (/21)',      score:hDS, maxS:21, interp:hDI}
+    );
+    allInterps = [eI,pI,iI,hAI,hDI];
+    if (eS>10)  recs.push('Consultation en médecine du sommeil recommandée (Epworth > 10)');
+    if (pS>17)  recs.push('Évaluation de la fatigue chronique — bilan biologique à envisager');
+    if (iS>14)  recs.push('Insomnie modérée à sévère (ISI > 14) — thérapie cognitive comportementale à envisager');
+    if (mS<=30) recs.push('Chronotype vespéral marqué — risque de décalage de phase circadien à évaluer');
+    if (hAS>=11) recs.push('Anxiété certaine (HAD-A ≥ 11) — soutien psychologique conseillé');
+    else if (hAS>=8) recs.push('Anxiété douteuse (HAD-A 8-10) — réévaluation à 4-6 semaines');
+    if (hDS>=11) recs.push('Dépression certaine (HAD-D ≥ 11) — consultation psychiatrique recommandée');
+    else if (hDS>=8) recs.push('Dépression douteuse (HAD-D 8-10) — surveillance clinique');
+    // Save
+    saveRecord({ type:'initial', eS,pS,iS,mS,hAS,hDS, interps:{epworth:eI.label,pichot:pI.label,isi:iI.label,meq:mI.label,hadA:hAI.label,hadD:hDI.label}, recs });
+  } else {
+    const hamS = sum(answers.hamilton);
+    const hamI = interpHamilton(hamS);
+    items.push({name:'Hamilton HAM-D (/52)', score:hamS, maxS:52, interp:hamI});
+    allInterps = [eI,pI,hamI];
+    if (eS>10)   recs.push('Somnolence persistante (Epworth > 10) — ajustement thérapeutique à envisager');
+    if (pS>17)   recs.push('Fatigue persistante — réévaluation biologique recommandée');
+    if (hamS>=14) recs.push(`Hamilton modéré à sévère (${hamS}/52) — traitement antidépresseur ou renforcement à envisager`);
+    else if (hamS>=8) recs.push(`Hamilton léger (${hamS}/52) — suivi psychologique à poursuivre`);
+    saveRecord({ type:'suivi', eS,pS,hamS, interps:{epworth:eI.label,pichot:pI.label,hamilton:hamI.label}, recs });
+  }
+
+  const risk = allInterps.filter(x=>x.cls==='severe').length;
+  const mod  = allInterps.filter(x=>x.cls==='moderate').length;
+  let globalTxt='', showWarn=false, warnTxt='';
+  if (risk>=2) {
+    globalTxt='Le bilan révèle <strong>plusieurs indicateurs préoccupants</strong> nécessitant une évaluation médicale rapide.';
+    showWarn=true; warnTxt='⚠️ Signalez ces résultats à votre médecin du sommeil dans les meilleurs délais.';
+  } else if (risk===1||mod>=2) {
+    globalTxt='Le bilan met en évidence <strong>certains éléments à surveiller</strong>. Une consultation médicale est recommandée.';
+    showWarn=true; warnTxt='⚠️ Ces résultats seront analysés par votre médecin lors de votre prochaine consultation.';
+  } else {
+    globalTxt='Le bilan ne révèle pas d\'anomalie majeure. Vos résultats seront néanmoins examinés par votre médecin.';
+  }
+
+  panel.innerHTML = `
+    <button class="btn-back" onclick="showChoicePanel()">← Nouveau questionnaire</button>
+
+    <div style="background:var(--green-pale);border:1px solid #b7ddc0;border-radius:var(--radius);padding:18px 22px;margin-bottom:20px;display:flex;align-items:flex-start;gap:14px;">
+      <span style="font-size:22px;flex-shrink:0;">✅</span>
+      <div>
+        <div style="font-weight:600;color:var(--green);font-size:15px;margin-bottom:4px;">Vos informations ont été transmises de manière sécurisée</div>
+        <div style="font-size:13px;color:var(--gray-5);line-height:1.6;">Elles ne sont <strong>pas conservées sur ce site</strong>. Aucun stockage serveur n'a été effectué. Les données ont été traitées uniquement en mémoire le temps de générer ce bilan, puis supprimées automatiquement.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><h2>Résultats de votre bilan</h2><p>${patientInfo.prenom} ${patientInfo.nom.toUpperCase()} · ${currentQType==='initial'?'Consultation initiale':'Consultation de suivi'} · ${new Date().toLocaleDateString('fr-FR',{year:'numeric',month:'long',day:'numeric'})}</p></div>
+      <div class="card-body">
+        <div class="results-grid">${items.map(it=>`
+          <div class="result-card ${it.interp.cls}">
+            <div class="result-card-name">${it.name}</div>
+            <div class="result-card-score">${it.score}<small style="font-size:14px;opacity:.5"> / ${it.maxS}</small></div>
+            <div class="result-card-label">${it.interp.label}</div>
+            <div class="result-card-interp">${it.interp.txt}</div>
+          </div>`).join('')}</div>
+      </div>
+    </div>
+    <div class="interp-block">
+      <h3>Interprétation globale</h3>
+      <p>${globalTxt}</p>
+      ${showWarn?`<div class="warning">${warnTxt}</div>`:''}
+    </div>
+    <div class="info-patient-banner">
+      ℹ️ Les recommandations médicales détaillées sont réservées à votre médecin, accessible dans l'espace professionnel sécurisé (identifiant + mot de passe requis). Elles ne vous sont pas communiquées directement sur ce site.
+    </div>
+
+    <button class="btn-pdf" onclick="generatePatientPDF()" style="margin-bottom:10px;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>
+      Imprimer / Télécharger mon bilan (PDF)
+    </button>
+    <p style="font-size:11px;color:var(--gray-4);text-align:center;margin-bottom:20px;">Ce document est à conserver et à remettre à votre médecin. Il ne sera pas stocké sur ce site.</p>`;
+  panel.scrollIntoView({behavior:'smooth',block:'start'});
+  window._lastItems = items;
+  window._lastGlobal = globalTxt.replace(/<[^>]+>/g,'');
+}
+
+// ══════════════════════════════════════════════
+// SAVE RECORD — Session uniquement (pas de stockage persistant)
+// Conformité RGPD : aucune donnée de santé conservée au-delà de la session navigateur.
+// Architecture scalable : remplacer sessionStorage par un appel API sécurisé HDS pour la v2.
+// ══════════════════════════════════════════════
+function getSessionRecords() {
+  return JSON.parse(sessionStorage.getItem('sommeil_session')||'[]');
+}
+function saveRecord(data) {
+  const recs = getSessionRecords();
+  const rec = {
+    id: Date.now(),
+    date: new Date().toISOString(),
+    patient: { ...patientInfo },   // copie en mémoire, pas persistée
+    qtype: data.type,
+    scores: data,
+    recs: data.recs
+  };
+  recs.push(rec);
+  sessionStorage.setItem('sommeil_session', JSON.stringify(recs));
+  // Mettre également à disposition dans l'espace pro (même session navigateur)
+  sessionStorage.setItem('sommeil_pro_pending', JSON.stringify(recs));
+}
+
+// ══════════════════════════════════════════════
+// PDF
+// ══════════════════════════════════════════════
+function generatePatientPDF() {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({ orientation:'portrait', format:'a4' });
+  const p = patientInfo;
+  const items = window._lastItems || [];
+  const dateStr = new Date().toLocaleDateString('fr-FR');
+
+  doc.setFillColor(13,34,64); doc.rect(0,0,210,38,'F');
+  doc.setTextColor(255,255,255);
+  doc.setFontSize(15); doc.setFont('helvetica','bold');
+  doc.text('Centre du Sommeil — Clinique Les Peupliers', 105, 14, {align:'center'});
+  doc.setFontSize(10); doc.setFont('helvetica','normal');
+  doc.text('Bilan de questionnaires — ' + (currentQType==='initial'?'Consultation initiale':'Consultation de suivi'), 105, 23, {align:'center'});
+  doc.text(`Généré le ${dateStr}`, 105, 31, {align:'center'});
+
+  doc.setTextColor(13,34,64); doc.setFontSize(12); doc.setFont('helvetica','bold');
+  doc.text('Patient', 20, 50); doc.setDrawColor(13,34,64); doc.line(20,52,190,52);
+  doc.setFontSize(10); doc.setFont('helvetica','normal'); doc.setTextColor(70,70,70);
+  doc.text(`Nom : ${p.nom.toUpperCase()} ${p.prenom}`, 20, 60);
+  if (p.nomJf) doc.text(`Nom de jeune fille : ${p.nomJf}`, 110, 60);
+  doc.text(`Naissance : ${formatDDN(p.ddn)}   Sexe : ${p.sexe==='F'?'Féminin':p.sexe==='M'?'Masculin':'Autre'}`, 20, 68);
+  doc.text(`E-mail : ${p.email}`, 20, 76);
+
+  doc.setFontSize(12); doc.setFont('helvetica','bold'); doc.setTextColor(13,34,64);
+  doc.text('Scores', 20, 90); doc.line(20,92,190,92);
+  let y=100;
+  items.forEach((it,i) => {
+    if (i%2===0) { doc.setFillColor(240,244,248); doc.rect(20,y-5,170,10,'F'); }
+    doc.setFont('helvetica','normal'); doc.setFontSize(10); doc.setTextColor(50,50,50);
+    doc.text(it.name, 22, y);
+    doc.text(`${it.score} / ${it.maxS}`, 130, y, {align:'right'});
+    const cls=it.interp.cls;
+    doc.setTextColor(cls==='normal'?45:cls==='mild'?184:176, cls==='normal'?122:cls==='mild'?106:48, cls==='normal'?58:cls==='mild'?0:48);
+    doc.text(it.interp.label, 135, y);
+    doc.setTextColor(50,50,50);
+    y+=11;
+  });
+
+  y+=6; doc.setFontSize(12); doc.setFont('helvetica','bold'); doc.setTextColor(13,34,64);
+  doc.text('Interprétation globale', 20, y); y+=4; doc.line(20,y,190,y); y+=8;
+  doc.setFont('helvetica','normal'); doc.setFontSize(10); doc.setTextColor(70,70,70);
+  const lines = doc.splitTextToSize(window._lastGlobal||'', 165);
+  doc.text(lines, 22, y); y+=lines.length*6+10;
+
+  doc.setFontSize(9); doc.setTextColor(150,150,150);
+  doc.line(20,280,190,280);
+  doc.text('Document confidentiel — Usage médical exclusif. Ne remplace pas un avis médical.', 105, 286, {align:'center'});
+  doc.text('Clinique Les Peupliers · 109 Rue d\'Hem, 59491 Villeneuve-d\'Ascq · 03 20 05 70 00', 105, 291, {align:'center'});
+  doc.save(`bilan_sommeil_${p.nom}_${p.prenom}_${dateStr.replace(/\//g,'')}.pdf`);
+}
+
+// ══════════════════════════════════════════════
+// PRO SPACE
+// ══════════════════════════════════════════════
+// Identifiants — lus depuis localStorage si modifiés, sinon valeurs par défaut
+// Pour changer les identifiants par défaut, modifiez les valeurs ci-dessous AVANT la mise en ligne
+const DEFAULT_CREDS = { user: 'medecin', pass: 'bordeaux2024' };
+function getProCreds() {
+  const stored = localStorage.getItem('pro_creds');
+  return stored ? JSON.parse(stored) : DEFAULT_CREDS;
+}
+
+function toggleCredPanel() {
+  const panel = document.getElementById('cred-panel');
+  const isOpen = panel.style.display === 'block';
+  panel.style.display = isOpen ? 'none' : 'block';
+  document.getElementById('cred-success').style.display = 'none';
+  document.getElementById('cred-error').style.display   = 'none';
+  if (!isOpen) {
+    document.getElementById('new-user').value         = '';
+    document.getElementById('new-user-confirm').value = '';
+    document.getElementById('new-pass').value         = '';
+    document.getElementById('new-pass-confirm').value = '';
+  }
+}
+
+function saveCredentials() {
+  const newUser    = document.getElementById('new-user').value.trim();
+  const newUserC   = document.getElementById('new-user-confirm').value.trim();
+  const newPass    = document.getElementById('new-pass').value;
+  const newPassC   = document.getElementById('new-pass-confirm').value;
+  const errEl      = document.getElementById('cred-error');
+  const successEl  = document.getElementById('cred-success');
+
+  errEl.style.display     = 'none';
+  successEl.style.display = 'none';
+
+  if (!newUser || !newPass) {
+    errEl.textContent = '⚠️ Tous les champs sont obligatoires.';
+    errEl.style.display = 'block'; return;
+  }
+  if (newUser !== newUserC) {
+    errEl.textContent = '⚠️ Les identifiants saisis ne correspondent pas.';
+    errEl.style.display = 'block'; return;
+  }
+  if (newPass !== newPassC) {
+    errEl.textContent = '⚠️ Les mots de passe saisis ne correspondent pas.';
+    errEl.style.display = 'block'; return;
+  }
+  if (newPass.length < 8) {
+    errEl.textContent = '⚠️ Le mot de passe doit contenir au moins 8 caractères.';
+    errEl.style.display = 'block'; return;
+  }
+
+  localStorage.setItem('pro_creds', JSON.stringify({ user: newUser, pass: newPass }));
+  document.getElementById('new-user').value         = '';
+  document.getElementById('new-user-confirm').value = '';
+  document.getElementById('new-pass').value         = '';
+  document.getElementById('new-pass-confirm').value = '';
+  successEl.style.display = 'block';
+}
+let isProLoggedIn = false;
+let currentProTab = 'initial';
+
+function doProLogin() {
+  const u    = document.getElementById('pro-user').value.trim();
+  const p    = document.getElementById('pro-pass').value;
+  const err  = document.getElementById('pro-login-err');
+  const creds = getProCreds();
+  if (u === creds.user && p === creds.pass) {
+    isProLoggedIn = true;
+    document.getElementById('pro-login-panel').style.display  = 'none';
+    document.getElementById('pro-dashboard').style.display    = 'block';
+    renderProDashboard();
+  } else { err.style.display = 'block'; }
+}
+
+function doProLogout() {
+  isProLoggedIn=false;
+  document.getElementById('pro-login-panel').style.display='block';
+  document.getElementById('pro-dashboard').style.display='none';
+  document.getElementById('pro-user').value='';
+  document.getElementById('pro-pass').value='';
+}
+
+function switchProTab(tab) {
+  currentProTab = tab;
+  const btnI = document.getElementById('tab-btn-initial');
+  const btnS = document.getElementById('tab-btn-suivi');
+  if (btnI && btnS) {
+    btnI.style.background = tab==='initial' ? 'var(--navy)' : 'var(--gray-2)';
+    btnI.style.color      = tab==='initial' ? '#fff'        : 'var(--gray-5)';
+    btnS.style.background = tab==='suivi'   ? 'var(--navy)' : 'var(--gray-2)';
+    btnS.style.color      = tab==='suivi'   ? '#fff'        : 'var(--gray-5)';
+  }
+  renderProTable(tab);
+}
+
+function renderProDashboard() {
+  // Lire sessionStorage (pas de localStorage — conformité RGPD)
+  const records = getSessionRecords();
+  const total   = records.length;
+  const initial = records.filter(r=>r.qtype==='initial').length;
+  const suivi   = records.filter(r=>r.qtype==='suivi').length;
+
+  document.getElementById('pro-stats').innerHTML = [
+    {num:total,   lbl:'Bilans reçus (session)'},
+    {num:initial, lbl:'Consultations initiales'},
+    {num:suivi,   lbl:'Consultations de suivi'},
+    {num:records.filter(r=>(r.scores.eS||0)>10).length, lbl:'Epworth > 10'},
+  ].map(s=>`<div class="stat-box"><div class="stat-num">${s.num}</div><div class="stat-label">${s.lbl}</div></div>`).join('');
+
+  const btn = document.getElementById('btn-csv');
+  if (btn) btn.disabled = total===0;
+
+  renderProTable(currentProTab);
+}
+
+function renderProTable(type) {
+  const records = getSessionRecords().filter(r=>r.qtype===type);
+  const tbody = document.getElementById('pro-records');
+  if (!records.length) {
+    tbody.innerHTML=`<div class="empty-state"><p>Aucun bilan de ${type==='initial'?'consultation initiale':'consultation de suivi'} reçu lors de cette session.</p></div>`;
+    document.getElementById('pro-detail').style.display='none';
+    return;
+  }
+  const cols = type==='initial'
+    ? `<th>ISI</th><th>MEQ</th><th>HAD-A</th><th>HAD-D</th>`
+    : `<th>Hamilton HAM-D</th>`;
+  tbody.innerHTML=`
+    <table>
+      <thead><tr>
+        <th>Patient</th><th>Date</th><th>Né(e) le</th><th>Epworth</th><th>Pichot</th>${cols}<th>Actions</th>
+      </tr></thead>
+      <tbody>
+        ${[...records].reverse().map(r=>{
+          const p=r.patient, s=r.scores;
+          const extraCols = type==='initial'
+            ? `<td>${s.iS??'—'}/28</td><td>${s.mS??'—'}/43</td><td>${s.hAS??'—'}/21</td><td>${s.hDS??'—'}/21</td>`
+            : `<td>${s.hamS??'—'}/52</td>`;
+          return `<tr>
+            <td><strong>${p?.nom?.toUpperCase()??'—'}</strong> ${p?.prenom??''}</td>
+            <td>${new Date(r.date).toLocaleDateString('fr-FR')}</td>
+            <td>${formatDDN(p?.ddn)}</td>
+            <td>${s.eS??'—'}/24</td>
+            <td>${s.pS??'—'}/32</td>
+            ${extraCols}
+            <td style="white-space:nowrap;display:flex;gap:4px;">
+              <button onclick="showProDetail(${r.id})" style="background:var(--teal-pale);border:1px solid var(--teal-light);color:var(--teal);border-radius:6px;padding:4px 8px;cursor:pointer;font-size:11px;font-weight:600;">Détail</button>
+              <button onclick="printProPDF(${r.id})" style="background:var(--navy);border:none;color:#fff;border-radius:6px;padding:4px 8px;cursor:pointer;font-size:11px;font-weight:600;">PDF</button>
+              <button onclick="deleteRec(${r.id})" style="background:none;border:none;cursor:pointer;color:var(--gray-4);font-size:14px;">🗑</button>
+            </td>
+          </tr>`;
+        }).join('')}
+      </tbody>
+    </table>`;
+}
+
+function showProDetail(id) {
+  const r = getSessionRecords().find(x=>x.id===id);
+  if (!r) return;
+  const p=r.patient, s=r.scores;
+  const panel = document.getElementById('pro-detail');
+  const rows = r.qtype==='initial' ? [
+    ['Epworth (Somnolence)',  s.eS,  24, s.interps?.epworth],
+    ['Pichot (Fatigue)',      s.pS,  32, s.interps?.pichot],
+    ['ISI (Insomnie)',        s.iS,  28, s.interps?.isi],
+    ['MEQ (Chronotype)',      s.mS,  43, s.interps?.meq],
+    ['HAD — Anxiété',         s.hAS, 21, s.interps?.hadA],
+    ['HAD — Dépression',      s.hDS, 21, s.interps?.hadD],
+  ] : [
+    ['Epworth (Somnolence)', s.eS,   24, s.interps?.epworth],
+    ['Pichot (Fatigue)',     s.pS,   32, s.interps?.pichot],
+    ['Hamilton HAM-D 17',    s.hamS, 52, s.interps?.hamilton],
+  ];
+
+  const clsOf = lbl => {
+    if (!lbl) return 'badge-mild';
+    if (lbl.includes('Normal')||lbl.includes('Absence')||lbl.includes('faible')) return 'badge-normal';
+    if (lbl.includes('douteux')||lbl.includes('légère')||lbl.includes('modéré')) return 'badge-mild';
+    return 'badge-severe';
+  };
+
+  const recsHtml = (r.recs||[]).map(rc=>`
+    <div style="padding:8px 0;border-bottom:var(--border);font-size:13px;display:flex;gap:10px;">
+      <span style="color:var(--teal);flex-shrink:0;">▸</span><span>${rc}</span>
+    </div>`).join('');
+
+  panel.style.display='block';
+  panel.innerHTML=`
+    <div class="card">
+      <div class="card-header">
+        <h2>Fiche — ${p?.nom?.toUpperCase()??'—'} ${p?.prenom??''}</h2>
+        <p>${new Date(r.date).toLocaleDateString('fr-FR',{year:'numeric',month:'long',day:'numeric'})} · ${r.qtype==='initial'?'Consultation initiale':'Consultation de suivi'}</p>
+      </div>
+      <div class="card-body">
+        <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--gray-4);margin-bottom:8px;">Identité</div>
+        <div style="background:var(--gray-1);border-radius:7px;padding:14px;font-size:13px;margin-bottom:20px;line-height:2;">
+          <strong>Né(e) le :</strong> ${formatDDN(p?.ddn)} &nbsp;·&nbsp;
+          <strong>Sexe :</strong> ${p?.sexe==='F'?'Féminin':p?.sexe==='M'?'Masculin':'—'}
+          ${p?.nomJf?`&nbsp;·&nbsp;<strong>Nom de jeune fille :</strong> ${p.nomJf}`:''}<br>
+          <strong>E-mail :</strong> ${p?.email??'—'}
+        </div>
+        <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--gray-4);margin-bottom:10px;">Scores</div>
+        <table style="width:100%;border-collapse:collapse;margin-bottom:20px;">
+          ${rows.map((row,i)=>`
+            <tr style="${i%2===0?'background:var(--gray-1)':''}">
+              <td style="padding:7px 10px;font-size:13px;color:var(--gray-4);">${row[0]}</td>
+              <td style="padding:7px 10px;font-size:14px;font-weight:600;text-align:right;">${row[1]??'—'}<span style="font-size:11px;font-weight:400;color:var(--gray-4);"> / ${row[2]}</span></td>
+              <td style="padding:7px 10px;text-align:right;"><span class="badge ${clsOf(row[3])}" style="font-size:11px;">${row[3]??'—'}</span></td>
+            </tr>`).join('')}
+        </table>
+        <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--gray-4);margin-bottom:10px;">Recommandations professionnelles</div>
+        <div style="margin-bottom:16px;">${recsHtml||'<p style="font-size:13px;color:var(--gray-4)">Aucune recommandation spécifique.</p>'}</div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <button onclick="printProPDF(${r.id})" class="btn-pdf" style="flex:1;min-width:160px;padding:11px;margin:0;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Imprimer / PDF
+          </button>
+          <button onclick="document.getElementById('pro-detail').style.display='none'" style="flex:1;min-width:120px;background:transparent;border:1px solid var(--gray-3);border-radius:7px;padding:11px;cursor:pointer;font-size:13px;color:var(--gray-4);">Fermer</button>
+        </div>
+      </div>
+    </div>`;
+  panel.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function printProPDF(id) {
+  const r = getSessionRecords().find(x=>x.id===id);
+  if (!r) return;
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({ orientation:'portrait', format:'a4' });
+  const p = r.patient, s = r.scores;
+  const dateStr = new Date(r.date).toLocaleDateString('fr-FR');
+  const typeLabel = r.qtype==='initial' ? 'Consultation initiale' : 'Consultation de suivi';
+
+  // Header
+  doc.setFillColor(13,34,64); doc.rect(0,0,210,42,'F');
+  doc.setTextColor(255,255,255);
+  doc.setFontSize(14); doc.setFont('helvetica','bold');
+  doc.text('Centre du Sommeil — Clinique Les Peupliers', 105, 13, {align:'center'});
+  doc.setFontSize(11); doc.setFont('helvetica','normal');
+  doc.text(`Bilan — ${typeLabel}`, 105, 22, {align:'center'});
+  doc.text(`Document professionnel — ${dateStr}`, 105, 31, {align:'center'});
+  doc.setFontSize(9);
+  doc.text('Confidentiel — Usage médical exclusif', 105, 38, {align:'center'});
+
+  // Patient identity
+  doc.setTextColor(13,34,64); doc.setFontSize(11); doc.setFont('helvetica','bold');
+  doc.text('Identité du patient', 20, 52);
+  doc.setDrawColor(13,34,64); doc.line(20,54,190,54);
+  doc.setFontSize(10); doc.setFont('helvetica','normal'); doc.setTextColor(60,60,60);
+  doc.text(`Nom : ${(p?.nom||'').toUpperCase()} ${p?.prenom||''}`, 20, 62);
+  if (p?.nomJf) doc.text(`Nom de jeune fille : ${p.nomJf}`, 120, 62);
+  doc.text(`Né(e) le : ${formatDDN(p?.ddn)}   Sexe : ${p?.sexe==='F'?'Féminin':p?.sexe==='M'?'Masculin':'—'}`, 20, 70);
+  doc.text(`Contact : ${p?.email||'—'}`, 20, 78);
+
+  // Scores
+  doc.setFontSize(11); doc.setFont('helvetica','bold'); doc.setTextColor(13,34,64);
+  doc.text('Scores des questionnaires', 20, 92); doc.line(20,94,190,94);
+  const rows = r.qtype==='initial' ? [
+    ['Epworth (Somnolence /24)', s.eS,  s.interps?.epworth],
+    ['Pichot (Fatigue /32)',     s.pS,  s.interps?.pichot],
+    ['ISI (Insomnie /28)',       s.iS,  s.interps?.isi],
+    ['MEQ (Chronotype /43)',     s.mS,  s.interps?.meq],
+    ['HAD — Anxiété (/21)',      s.hAS, s.interps?.hadA],
+    ['HAD — Dépression (/21)',   s.hDS, s.interps?.hadD],
+  ] : [
+    ['Epworth (Somnolence /24)', s.eS,   s.interps?.epworth],
+    ['Pichot (Fatigue /32)',     s.pS,   s.interps?.pichot],
+    ['Hamilton HAM-D 17 (/52)', s.hamS, s.interps?.hamilton],
+  ];
+  let y = 102;
+  rows.forEach((row,i) => {
+    if (i%2===0) { doc.setFillColor(240,244,248); doc.rect(20,y-5,170,10,'F'); }
+    doc.setFont('helvetica','normal'); doc.setFontSize(10); doc.setTextColor(50,50,50);
+    doc.text(String(row[0]), 22, y);
+    doc.text(String(row[1]??'—'), 140, y, {align:'right'});
+    const lbl = row[2]||'';
+    const isOk = lbl.includes('Normal')||lbl.includes('Absence')||lbl.includes('faible');
+    const isWarn = lbl.includes('sévère')||lbl.includes('certain')||lbl.includes('élevé');
+    doc.setTextColor(isOk?45:isWarn?176:184, isOk?122:isWarn?48:106, isOk?58:isWarn?48:0);
+    doc.text(lbl, 143, y);
+    doc.setTextColor(50,50,50);
+    y += 11;
+  });
+
+  // Recommendations
+  y += 4;
+  doc.setFontSize(11); doc.setFont('helvetica','bold'); doc.setTextColor(13,34,64);
+  doc.text('Recommandations professionnelles', 20, y); y+=4;
+  doc.line(20,y,190,y); y+=8;
+  doc.setFont('helvetica','normal'); doc.setFontSize(9.5); doc.setTextColor(60,60,60);
+  (r.recs||['Aucune recommandation spécifique.']).forEach(rec => {
+    const lines = doc.splitTextToSize('• ' + rec, 165);
+    if (y + lines.length*6 > 275) { doc.addPage(); y=20; }
+    doc.text(lines, 22, y);
+    y += lines.length*6 + 3;
+  });
+
+  // Footer
+  doc.setFontSize(8); doc.setTextColor(140,140,140);
+  doc.line(20,280,190,280);
+  doc.text('Document confidentiel — Ne remplace pas un avis médical — Usage réservé au professionnel de santé', 105, 286, {align:'center'});
+  doc.text('Clinique Les Peupliers · 109 Rue d\'Hem, 59491 Villeneuve-d\'Ascq · 03 20 05 70 00', 105, 291, {align:'center'});
+
+  doc.save(`bilan_pro_${r.qtype}_${(p?.nom||'patient').toUpperCase()}_${dateStr.replace(/\//g,'')}.pdf`);
+}
+
+function deleteRec(id) {
+  if (!confirm('Supprimer ce bilan de la session ?')) return;
+  const recs = getSessionRecords().filter(r=>r.id!==id);
+  sessionStorage.setItem('sommeil_session', JSON.stringify(recs));
+  sessionStorage.setItem('sommeil_pro_pending', JSON.stringify(recs));
+  renderProDashboard();
+}
+
+function exportCSV() {
+  const records = getSessionRecords();
+  if (!records.length) return;
+  const BOM='\uFEFF';
+  const esc=v=>{const s=String(v??'');return (s.includes(';')||s.includes('"'))?`"${s.replace(/"/g,'""')}"`  :s;};
+  const headers=['Date','Type','Nom','Prénom','DDN','Sexe','Nom_JF','Email',
+    'Epworth(/24)','Pichot(/32)','ISI(/28)','MEQ(/43)','HAD-A(/21)','HAD-D(/21)','Hamilton(/52)','Recommandations'];
+  const rows=records.map(r=>{
+    const p=r.patient,s=r.scores;
+    return [
+      new Date(r.date).toLocaleDateString('fr-FR'),
+      r.qtype==='initial'?'Initiale':'Suivi',
+      p?.nom??'', p?.prenom??'', formatDDN(p?.ddn), p?.sexe??'', p?.nomJf??'', p?.email??'',
+      s.eS??'', s.pS??'', s.iS??'', s.mS??'', s.hAS??'', s.hDS??'', s.hamS??'',
+      (r.recs||[]).join(' | ')
+    ];
+  });
+  const csv=BOM+[headers,...rows].map(row=>row.map(esc).join(';')).join('\r\n');
+  const blob=new Blob([csv],{type:'text/csv;charset=utf-8;'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url;
+  a.download=`bilans_sommeil_${new Date().toLocaleDateString('fr-FR').replace(/\//g,'-')}.csv`;
+  document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
+}
+
+// ══════════════════════════════════════════════
+// DEEP LINKING — lecture des paramètres URL
+// Exemples :
+//   index.html?q=initial  → ouvre directement le questionnaire initial
+//   index.html?q=suivi    → ouvre directement le questionnaire de suivi
+//   index.html?page=pro   → ouvre directement l'espace pro
+// ══════════════════════════════════════════════
+(function initFromURL() {
+  const params = new URLSearchParams(window.location.search);
+  const q    = params.get('q');
+  const page = params.get('page');
+
+  if (q === 'initial') {
+    switchTab('questionnaires');
+    // Petit délai pour que le DOM soit prêt
+    setTimeout(() => startQuestionnaire('initial'), 100);
+  } else if (q === 'suivi') {
+    switchTab('questionnaires');
+    setTimeout(() => startQuestionnaire('suivi'), 100);
+  } else if (q === 'agenda') {
+    switchTab('questionnaires');
+    setTimeout(() => openSomnora(), 100);
+  } else if (page) {
+    switchTab(page);
+  }
+})();
+</script>
+</body>
+</html>
